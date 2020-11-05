@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>632</x>
+      <y>448</y>
+      <w>456</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>Dozent
+
+--
+
+
+--
+- punkteEintragen(aufgabe: Aufgabe, punkte: int): void
+- prüfungErstellen(prüfung: Prüfung): Prüfung
+- weiterenDozentenEinladen(prüfung: Prüfung, dozenten: List&lt;Dozent&gt;): void
+- notenschluesselAnpassen(prüfung: Prüfung, notenschluessel: Notenschluessel): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>632</x>
+      <y>16</y>
+      <w>416</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Student
+
+--
+- matrikelNummer: long
+- vorname: string
+- nachname: string
+- versuch: int
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>632</x>
+      <y>224</y>
+      <w>416</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Prüfung
+
+--
+- zeitpunkt: DateTime
+- name: string
+- prüfungsart: Prüfungsart
+- notenSchnitt: double
+- archiviert: boolean
+
+--
+- archivieren(archiviert: boolean): void
+- grafikErzeugen(): void
+- notenVerteilungAnsehen(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1184</x>
+      <y>224</y>
+      <w>272</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Aufgabe
+
+--
+- maxPunkte: int
+- name: string
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>824</x>
+      <y>128</y>
+      <w>72</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..n
+m2=0..n
+schreibt &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1040</x>
+      <y>224</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..n
+besteht aus &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>824</x>
+      <y>376</y>
+      <w>72</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..n
+m2=1..n
+&lt; betreut</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>376</x>
+      <y>224</y>
+      <w>112</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+Prüfungsart
+
+--
+Schriftliche Klausur
+Mündliche Prüfung
+Praktische Prüfung
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>232</y>
+      <w>168</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1136</x>
+      <y>408</y>
+      <w>272</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Notenschluessel
+
+--
+- maxPunkteDerKlausur: int
+- zuteilung: Dictionary&lt;double, double&gt;
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1040</x>
+      <y>328</y>
+      <w>144</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1
+hat &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;160.0;20.0;160.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>168</x>
+      <y>448</y>
+      <w>416</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>Admin
+
+--
+
+
+--
+- prüfungLöschen(prüfung: Prüfung): Prüfung
+- archivierungAufheben(prüfung: Prüfung): Prüfung</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>728</y>
+      <w>416</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Person/
+
+--
+- mitarbeiterNummer: long
+- vorname: string
+- nachname: string
+- benutzername: string
+- passwort: string
+
+--
+- anmelden(benutzernamen: string, passwort: string): boolean
+- abmelden(): boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>672</y>
+      <w>24</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>664</y>
+      <w>496</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>624</y>
+      <w>24</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>832</x>
+      <y>624</y>
+      <w>24</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
