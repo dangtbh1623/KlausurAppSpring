@@ -3,7 +3,7 @@ tr:nth-of-type(even){background: rgb(255, 255, 255)}
 tr:nth-of-type(odd){background: rgb(55, 11, 250)}
 
 .navigation {
-    background-color: rgb(125, 123, 231);
+    background-color: #087187;
     padding: 14px;
 }
 
