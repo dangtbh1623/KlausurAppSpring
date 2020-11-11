@@ -54,6 +54,7 @@ input {
 
 button {
     background-color: #087187;
+    color: white;
 }
 
 a {
@@ -66,3 +67,4 @@ a {
     justify-content: space-between;
     width: 801px;
 }
+

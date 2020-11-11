@@ -17,13 +17,20 @@
 			<div class="header">
 				<h1>Melde dich an</h1>
 			</div>
-			<div>
+			<!-- <div>
 				<input type="text" id="username" placeholder="Benutzername">
 			</div>
 			<div>
 				<input type="password" id="password" placeholder="Passwort">
 			</div>
-			<a href="./start.html"><button>Anmelden</button></a>
+			<a href="./start.html"><button>Anmelden</button></a> -->
+
+			<!-- Dang: Habe die Anmeldung im Form umgesetzt und berücksichtige auf die Pausabilität. -->
+			<form action="./start.html">
+				<input type="text" name="username" placeholder="Benutzername" pattern="[a-z]{5}[0-9]{3}" title="Form: maxtr002" required>
+				<input type="password" name="password" placeholder="Passwort">
+				<button type="submit">Anmelden</button>
+			</form>
 		</div>
 	</div>
 </body>
