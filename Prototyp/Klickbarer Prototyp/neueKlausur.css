@@ -1,0 +1,64 @@
+.navigation {
+    background-color: #087187;
+    padding: 14px 0px;
+    overflow: hidden;
+}
+
+.navigation a {
+    color: #ffffff;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    font-family:arial;
+    display: block;
+    display: inline;
+}
+
+.navigation a:hover {
+    background-color: #09677a;
+}
+ 
+.navigation a.active {
+    background-color: #052844;
+    color: white;
+    text-decoration: none;
+}
+
+.navigation a.visited {
+    color: white;
+    text-decoration: none;
+}
+
+.navigation a.link {
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    align-content: center;
+}
+
+input, select{
+    border: 0.2em solid #09677a;
+    padding: 0.1em;
+    margin-bottom: 0.8em;
+    color: #087187;
+}
+
+button {
+    background-color: #087187;
+    color: white;
+
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    color: #087187;
+}

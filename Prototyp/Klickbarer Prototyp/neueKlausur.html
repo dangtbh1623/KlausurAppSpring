@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <title>Erstellung einer neuen Klausur</title>
+    <link rel="stylesheet" href="neueKlausur.css">
+    <meta charset="utf-8">
+</head>
+<body>
+    <div class="navigation">
+		<a href="./start.html">Aktiv</a>
+		<a href="">Archiv</a>
+		<a href="">Neue Klausur</a>
+    </div>
+    <main>
+        <section>
+            <h2>Eine neue Klausur erstellen</h2>
+            <form action="./start.html" method="POST">
+                Name:
+                <input type="text" name="name" size="60" maxlength="60" placeholder="Entwurfsmuster und Komponentenbasierte Systeme 2021" required><br>
+                Modulnummer:
+                <input name="Modulnummer"  pattern="[0-9]{7}" title="Die Länge der Modulnummer muss 7 sein." placeholder="4851266">
+                Datum:
+                <input type="date" name="Datum" value="2020-11-11"><br>
+                Prüfungsart:
+                <select name="Pruefungsart">
+                    <option value="Muendliche Pruefung">Muendliche Pruefung</option>
+                    <option value="Praktische Pruefung">Praktische Pruefung</option>
+                    <option value="Schriftliche Pruefung">Schriftliche Pruefung</option>
+                </select>
+                Semester:
+                <select name="Semester">
+                    <option value="Winter">Winter</option>
+                    <option value="Sommer">Sommer</option>
+                </select><br>
+                <button type="submit">Erstellen</button> 
+            </form>
+        </section>
+    </main>
+</body>
+</html>
