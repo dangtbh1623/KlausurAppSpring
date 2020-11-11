@@ -31,6 +31,10 @@ tr:nth-of-type(odd){background: rgb(55, 11, 250)}
     text-decoration: none;
 }
 
+.navigation a:hover {
+    background-color: #09677a;
+}
+
 th.complete{
     background-color: rgb(131, 250, 131);
 }

@@ -28,6 +28,10 @@
     text-decoration: none;
 }
 
+.navigation a:hover {
+    background-color: #09677a;
+}
+
 .container {
     height: 900px;
     width: 100%;
