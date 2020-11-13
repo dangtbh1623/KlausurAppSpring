@@ -1,9 +1,9 @@
-.navigation { /*Block*/
+.navigation { /* Block*/
     background-color: #087187;
     padding: 14px;
 }
 
-.navigation__item{ /*Element */
+.navigation__item{ /* Element */
     color: #ffffff;
     padding: 14px 16px;
     text-decoration: none;
@@ -11,86 +11,76 @@
     font-family:arial;
 }
 
-.navigation__item--active{ /*Modifier */
+.navigation__item--active{ /* Modifier */
     background-color: #6c98bd;
     color: white;
     text-decoration: none;
 }
 
-.navigation__item--visited { /*Modifier */
-    color: white;
-    text-decoration: none;
-}
-
-.navigation__item--link { /*Modifier */
-    color: white;
-    text-decoration: none;
-}
-
-.body{ /*Block*/
+.body{ /* Block */
     font-family:arial;
 }
 
-.examiner__button--default{ /*Modifier */
+.examiner__button{ /* Element */
     background-color: rgb(125, 123, 231);
     border-radius: 4px;
     border-color: rgb(125, 123, 231);
 }
 
-.examiner__list--default{
+.examiner__list{ /* Element */
     margin: 0px;
     padding: 0px;
 }
 
-.examiner__listitem--noListStyle{ /*Modifier */
+.examiner__listitem{ /* Element */
     list-style-type: none;
 }
 
-.examiner--default{ /*Modifier */
+.examiner{ /* Block */
     border-right: 2px solid rgb(0, 0, 0);
     height: 80%;
 }
 
-.studis--default{ /*Modifier */
+.examiner--floating{ /* Modifier */
+    float: left;
+    margin: 5px;
+}
+
+.studis{ /* Block */
     border-right: 2px solid rgb(0, 0, 0);
     height: 80%;
 }
 
-.tasks--default{ /*Modifier */
+.tasks{ /* Block */
     border-right: 2px solid rgb(0, 0, 0);
     height: 80%;
 }
 
-.clef{ /*Block*/
+.clef{ /* Block*/
     border-bottom: 2px solid rgb(0, 0, 0);
 }
 
-.examiner--floating{ /*Modifier */
+.studis--floating{ /* Modifier */
     float: left;
     margin: 5px;
 }
 
-.studis--floating{ /*Modifier */
+.tasks{ /* Block */
     float: left;
     margin: 5px;
 }
 
-.tasks--floating{ /*Modifier */
-    float: left;
-    margin: 5px;
-}
-
-.tasks__button--default{ /*Modifier */
+.tasks__button{ /* Element */
     background-color: rgb(125, 123, 231);
     border-radius: 4px;
     border-color: rgb(125, 123, 231);
 }
 
-.clefAndEvaluation--floating{ /*Modifier */
+.clefAndEvaluation{ /* Block */
     float: left;
     margin: 5px;
 }
 
-.studis__table--borderSpacing{ /*Modifier */
+.studis__table{ /* Element */
     border-spacing: 10px;
 }
