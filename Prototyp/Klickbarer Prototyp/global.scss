@@ -1,0 +1,39 @@
+/* Definition von MixIns, um wiedervendbare Blöcke zu haben */
+@mixin linkDecoration($color, $deco) {
+    color: $color;
+    text-decoration: $deco;
+}
+
+/* Globale Variablen, um das Aussehen schnell, ohne viele Änderungen, anpassen zu können */
+$textColor: white;
+$fontFamily: arial;
+
+/*Block*/
+.navigation {
+    background-color: #087187;
+    padding: 14px;
+    height: 20px;
+
+    /* Element */
+    .navigation__item {
+        padding: 14px 16px;
+        font-size: 17px;
+        font-family: $fontFamily;
+        @include linkDecoration($textColor, none);
+
+        &:hover {
+            background-color: #09677a;
+        }
+    }
+
+    /* Modifier */
+    .navigation__item--active {
+        background-color: #6c98bd;
+        @include linkDecoration($textColor, none);
+    }
+}
+
+/* Block */
+.body {
+    font-family: $fontFamily;
+}
