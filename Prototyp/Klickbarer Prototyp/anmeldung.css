@@ -1,74 +1,94 @@
+/*Block*/
 .navigation {
-    background-color: #087187;
-    padding: 14px;
-    height: 20px;
+  background-color: #087187;
+  padding: 14px;
+  height: 20px;
 }
 
 .navigation a {
-    color: #ffffff;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    font-family: arial;
+  padding: 14px 16px;
+  font-size: 17px;
+  font-family: arial;
+  color: white;
+  text-decoration: none;
 }
 
 .navigation a.active {
-    background-color: #6c98bd;
-    color: white;
-    text-decoration: none;
+  background-color: #6c98bd;
+  color: white;
+  text-decoration: none;
 }
 
 .navigation a.visited {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .navigation a.link {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .navigation a:hover {
-    background-color: #09677a;
+  background-color: #09677a;
 }
 
 .container {
-    height: 900px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url('hintergrund.jpg');
+  height: 900px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url("hintergrund.jpg");
 }
 
 .itemContainer {
-    width: 200px;
+  width: 200px;
 }
 
 h1 {
-    align-self: start;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
 }
 
 input {
-    height: 20px;
-    margin-bottom: 10px;
-    border-color: #087187;
+  height: 20px;
+  margin-bottom: 10px;
+  border-color: #087187;
 }
 
 button {
-    background-color: #087187;
-    color: white;
+  background-color: #087187;
+  color: white;
 }
 
 a {
-    align-self: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 801px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 801px;
 }
-
+/*# sourceMappingURL=anmeldung.css.map */
