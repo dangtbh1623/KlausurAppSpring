@@ -189,26 +189,4 @@
   margin-bottom: 15px;
   position: relative;
 }
-
-.itemsContainer {
-  /* Element */
-  /* Element */
-}
-
-.itemsContainer .itemsContainer__overlay {
-  background-color: grey;
-  opacity: 0.7;
-  width: 720px;
-  height: 25px;
-  padding-bottom: 15px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.itemsContainer .itemsContainer__button {
-  height: 40px;
-}
-/*# sourceMappingURL=archiv.css.map */
+/*# sourceMappingURL=klausurenSicht.css.map */

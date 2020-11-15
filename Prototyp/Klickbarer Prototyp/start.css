@@ -28,11 +28,13 @@
   text-decoration: none;
 }
 
+/* Block */
 .body {
   font-family: arial;
 }
 
-.container {
+/* Block */
+.contentContainer {
   height: 900px;
   width: 100%;
   display: -webkit-box;
@@ -48,13 +50,17 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  /* Block */
 }
 
-.itemContainer {
+.contentContainer .itemsContainer {
   width: 801px;
+  /* Element */
+  /* Element */
+  /* Element */
 }
 
-.wiSe {
+.contentContainer .itemsContainer .itemsContainer__header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -62,9 +68,37 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 801px;
+  /* Modifier */
+  /* Modifier */
 }
 
-.semesterContainerWinter {
+.contentContainer .itemsContainer .itemsContainer__header .itemsContainer__header--align {
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+}
+
+.contentContainer .itemsContainer .itemsContainer__header .itemsContainer__header--inputHeight {
+  height: 40px;
+}
+
+.contentContainer .itemsContainer .itemsContainer__elementWiSe {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  /* Element */
+  /* Element */
+}
+
+.contentContainer .itemsContainer .itemsContainer__elementWiSe .itemsContainer__elementWiSeSquare {
   clear: both;
   background-color: #004a5a;
   width: 40px;
@@ -79,13 +113,14 @@
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 15px;
+  /* Modifier */
 }
 
-.winter {
+.contentContainer .itemsContainer .itemsContainer__elementWiSe .itemsContainer__elementWiSeSquare .itemsContainer__elementWiSeSquare--textColor {
   color: white;
 }
 
-.textWinter {
+.contentContainer .itemsContainer .itemsContainer__elementWiSe .itemsContainer__elementWiSeText {
   float: right;
   background-color: #a6c0c5;
   width: 800px;
@@ -100,7 +135,7 @@
   margin-bottom: 15px;
 }
 
-.soSe {
+.contentContainer .itemsContainer .itemsContainer__elementSoSe {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -108,9 +143,11 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  /* Element */
+  /* Element */
 }
 
-.semesterContainerSommer {
+.contentContainer .itemsContainer .itemsContainer__elementSoSe .itemsContainer__elementSoSeSquare {
   clear: both;
   background-color: #2aa4be;
   width: 40px;
@@ -125,13 +162,14 @@
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 15px;
+  /* Modifier */
 }
 
-.sommer {
+.contentContainer .itemsContainer .itemsContainer__elementSoSe .itemsContainer__elementSoSeSquare .itemsContainer__elementSoSeSquare--textColor {
   color: white;
 }
 
-.textSommer {
+.contentContainer .itemsContainer .itemsContainer__elementSoSe .itemsContainer__elementSoSeText {
   float: right;
   background-color: #b5dfe8;
   width: 800px;
@@ -144,29 +182,5 @@
           align-items: center;
   padding-left: 5px;
   margin-bottom: 15px;
-}
-
-h1 {
-  -ms-flex-item-align: start;
-      -ms-grid-row-align: start;
-      align-self: start;
-}
-
-input {
-  height: 40px;
-}
-
-.header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 801px;
 }
 /*# sourceMappingURL=start.css.map */
