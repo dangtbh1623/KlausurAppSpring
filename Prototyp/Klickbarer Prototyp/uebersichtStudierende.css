@@ -1,59 +1,81 @@
-th{background-color: white;}
-tr:nth-of-type(even){background: rgb(255, 255, 255)}
-tr:nth-of-type(odd){background: rgb(55, 11, 250)}
-
+@charset "UTF-8";
+/* Definition von MixIns, um wiedervendbare Blöcke zu haben */
+/* Globale Variablen, um das Aussehen schnell, ohne viele Änderungen, anpassen zu können */
+/*Block*/
 .navigation {
-    background-color: #087187;
-    padding: 14px;
+  background-color: #087187;
+  padding: 14px;
+  height: 20px;
+  /* Element */
+  /* Modifier */
 }
 
-.navigation a {
-    color: #ffffff;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    font-family:arial;
-}
- 
-.navigation a.active {
-    background-color: #6c98bd;
-    color: white;
-    text-decoration: none;
+.navigation .navigation__item {
+  padding: 14px 16px;
+  font-size: 17px;
+  font-family: arial;
+  color: white;
+  text-decoration: none;
 }
 
-.navigation a.visited {
-    color: white;
-    text-decoration: none;
+.navigation .navigation__item:hover {
+  background-color: #09677a;
 }
 
-.navigation a.link {
-    color: white;
-    text-decoration: none;
+.navigation .navigation__item--active {
+  background-color: #6c98bd;
+  color: white;
+  text-decoration: none;
 }
 
-.navigation a:hover {
-    background-color: #09677a;
+/* Block */
+.body {
+  font-family: arial;
 }
 
-th.complete{
-    background-color: rgb(131, 250, 131);
+/* Block */
+.studisTabel {
+  border-collapse: collapse;
+  /* Element */
+  /* Element */
+  /* Modifier */
+  /* Modifier */
+  /* Modifier */
 }
 
-.borderRight{
-    border-right:2px solid rgb(0, 0, 0);
+.studisTabel .studisTabel--tableHead {
+  background-color: white;
 }
 
-table { 
-    border-collapse: collapse; 
+.studisTabel .studisTabel--tableRow:nth-of-type(even) {
+  background: white;
 }
 
-tr.thirdTry{
-    border: 2px solid rgb(255, 0, 0);
+.studisTabel .studisTabel--tableRow:nth-of-type(odd) {
+  background: #370bfa;
 }
 
-button{
-    float: right;
-    background-color: rgb(125, 123, 231);
-    border-radius: 4px;
-    border-color: rgb(125, 123, 231);
+.studisTabel .studisTabel--thirdTry {
+  border: 2px solid red;
 }
+
+.studisTabel .studisTabel--borderRight {
+  border-right: 2px solid black;
+}
+
+.studisTabel .studisTabel--complete {
+  background-color: #83fa83;
+}
+
+/* Element */
+.exit__button {
+  background-color: #7d7be7;
+  border-radius: 4px;
+  border-color: #7d7be7;
+}
+
+/* Modifier */
+.exit__button--floating {
+  float: right;
+}
+/*# sourceMappingURL=uebersichtStudierende.css.map */

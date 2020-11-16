@@ -94,6 +94,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  position: relative;
   /* Element */
   /* Element */
 }
@@ -113,6 +114,7 @@
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 15px;
+  position: relative;
   /* Modifier */
 }
 
@@ -133,6 +135,7 @@
           align-items: center;
   padding-left: 5px;
   margin-bottom: 15px;
+  position: relative;
 }
 
 .contentContainer .itemsContainer .itemsContainer__elementSoSe {
@@ -143,6 +146,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  position: relative;
   /* Element */
   /* Element */
 }
@@ -162,6 +166,7 @@
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 15px;
+  position: relative;
   /* Modifier */
 }
 
@@ -182,5 +187,6 @@
           align-items: center;
   padding-left: 5px;
   margin-bottom: 15px;
+  position: relative;
 }
 /*# sourceMappingURL=start.css.map */

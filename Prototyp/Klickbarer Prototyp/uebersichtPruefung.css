@@ -1,86 +1,114 @@
-.navigation { /* Block*/
-    background-color: #087187;
-    padding: 14px;
+@charset "UTF-8";
+/* Definition von MixIns, um wiedervendbare Blöcke zu haben */
+/* Globale Variablen, um das Aussehen schnell, ohne viele Änderungen, anpassen zu können */
+/*Block*/
+.navigation {
+  background-color: #087187;
+  padding: 14px;
+  height: 20px;
+  /* Element */
+  /* Modifier */
 }
 
-.navigation__item{ /* Element */
-    color: #ffffff;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    font-family:arial;
+.navigation .navigation__item {
+  padding: 14px 16px;
+  font-size: 17px;
+  font-family: arial;
+  color: white;
+  text-decoration: none;
 }
 
-.navigation__item--active{ /* Modifier */
-    background-color: #6c98bd;
-    color: white;
-    text-decoration: none;
+.navigation .navigation__item:hover {
+  background-color: #09677a;
 }
 
-.body{ /* Block */
-    font-family:arial;
+.navigation .navigation__item--active {
+  background-color: #6c98bd;
+  color: white;
+  text-decoration: none;
 }
 
-.examiner__button{ /* Element */
-    background-color: rgb(125, 123, 231);
-    border-radius: 4px;
-    border-color: rgb(125, 123, 231);
+/* Block */
+.body {
+  font-family: arial;
 }
 
-.examiner__list{ /* Element */
-    margin: 0px;
-    padding: 0px;
+/* Block */
+.examiner {
+  border-right: 2px solid black;
+  height: 80%;
+  /* Element */
+  /* Element */
+  /* Element */
 }
 
-.examiner__listitem{ /* Element */
-    list-style-type: none;
+.examiner .examiner__button {
+  background-color: #7d7be7;
+  border-radius: 4px;
+  border-color: #7d7be7;
 }
 
-.examiner{ /* Block */
-    border-right: 2px solid rgb(0, 0, 0);
-    height: 80%;
+.examiner .examiner__list {
+  margin: 0px;
+  padding: 0px;
 }
 
-.examiner--floating{ /* Modifier */
-    float: left;
-    margin: 5px;
+.examiner .examiner__listitem {
+  list-style-type: none;
 }
 
-.studis{ /* Block */
-    border-right: 2px solid rgb(0, 0, 0);
-    height: 80%;
+/* Modifier */
+/* Siehe Kommentar Zeile 48 */
+.examiner--floating {
+  float: left;
+  margin: 5px;
 }
 
-.tasks{ /* Block */
-    border-right: 2px solid rgb(0, 0, 0);
-    height: 80%;
+/* Block */
+.studis {
+  border-right: 2px solid black;
+  height: 80%;
+  /* Element */
 }
 
-.clef{ /* Block*/
-    border-bottom: 2px solid rgb(0, 0, 0);
+.studis .studis__table {
+  border-spacing: 10px;
 }
 
-.studis--floating{ /* Modifier */
-    float: left;
-    margin: 5px;
+/* Modifier */
+/* Aufgrund der HTML Struktur "<div class="studis studis--floating">" kann dieser Modifier nicht in den Block geschaltelt werden. */
+.studis--floating {
+  float: left;
+  margin: 5px;
 }
 
-.tasks{ /* Block */
-    float: left;
-    margin: 5px;
+/* Block */
+.tasks {
+  border-right: 2px solid black;
+  height: 80%;
 }
 
-.tasks__button{ /* Element */
-    background-color: rgb(125, 123, 231);
-    border-radius: 4px;
-    border-color: rgb(125, 123, 231);
+/* Block*/
+.clef {
+  border-bottom: 2px solid black;
 }
 
-.clefAndEvaluation{ /* Block */
-    float: left;
-    margin: 5px;
+/* Block */
+.tasks {
+  float: left;
+  margin: 5px;
+  /* Element */
 }
 
-.studis__table{ /* Element */
-    border-spacing: 10px;
+.tasks .tasks__button {
+  background-color: #7d7be7;
+  border-radius: 4px;
+  border-color: #7d7be7;
 }
+
+/* Block */
+.clefAndEvaluation {
+  float: left;
+  margin: 5px;
+}
+/*# sourceMappingURL=uebersichtPruefung.css.map */
