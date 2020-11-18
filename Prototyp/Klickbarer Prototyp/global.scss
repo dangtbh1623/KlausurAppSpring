@@ -19,10 +19,18 @@ $fontFamily: arial;
         padding: 14px 16px;
         font-size: 17px;
         font-family: $fontFamily;
+        display: block;
+        display: inline;
         @include linkDecoration($textColor, none);
 
         &:hover {
             background-color: #09677a;
+            text-decoration: underline;
+        }
+
+        &:active {
+            background-color: #7d7ff0;
+            color: rgb(11, 103, 241);
         }
     }
 
