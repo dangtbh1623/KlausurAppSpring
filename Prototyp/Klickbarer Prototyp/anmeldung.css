@@ -60,33 +60,15 @@
   background-image: url("hintergrund.jpg");
 }
 
-.itemContainer {
+/* Block */
+.itemContainerBlock {
   width: 200px;
+  /* Element */
+  /* Element */
+  /* Element */
 }
 
-h1 {
-  -ms-flex-item-align: start;
-      -ms-grid-row-align: start;
-      align-self: start;
-}
-
-input {
-  height: 20px;
-  margin-bottom: 10px;
-  border-color: #087187;
-}
-
-button {
-  background-color: #087187;
-  color: white;
-}
-
-a {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-}
-
-.header {
+.itemContainerBlock__Text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -98,5 +80,50 @@ a {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 801px;
+}
+
+.itemContainerBlock__Text h1 {
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+  color: #087187;
+}
+
+.itemContainerBlock__form {
+  margin-top: 0.1em;
+}
+
+.itemContainerBlock__input {
+  height: 20px;
+  margin-bottom: 10px;
+  border-color: #087187;
+}
+
+.itemContainerBlock__input::-webkit-input-placeholder {
+  color: #08728767;
+}
+
+.itemContainerBlock__input:-ms-input-placeholder {
+  color: #08728767;
+}
+
+.itemContainerBlock__input::-ms-input-placeholder {
+  color: #08728767;
+}
+
+.itemContainerBlock__input::placeholder {
+  color: #08728767;
+}
+
+.itemContainerBlock__button {
+  background-color: #087187;
+  color: white;
+  border-radius: 0.75em;
+  font-weight: bold;
+}
+
+.itemContainerBlock__button:hover {
+  background-color: #09677a;
+  text-decoration: underline;
 }
 /*# sourceMappingURL=anmeldung.css.map */

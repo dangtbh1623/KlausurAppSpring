@@ -121,31 +121,20 @@ main {
   margin-right: 2em;
 }
 
-.inputBlock__button {
-  background-color: #087187;
-  color: white;
-  padding: 14px 40px;
-  border-radius: 0.75em;
-  float: right;
-  font-weight: bold;
+.inputBlock__input::-webkit-input-placeholder {
+  color: #08728767;
 }
 
-.inputBlock__form {
-  margin-top: 2em;
+.inputBlock__input:-ms-input-placeholder {
+  color: #08728767;
 }
 
-.inputBlock__button:hover {
-  background-color: #09677a;
-  text-decoration: underline;
+.inputBlock__input::-ms-input-placeholder {
+  color: #08728767;
 }
 
-.inputBlock__input {
-  color: #087187;
-  border: 0.2em solid #09677a;
-  border-radius: 0.75em;
-  padding: 0.3em;
-  margin-bottom: 0.75em;
-  margin-right: 2em;
+.inputBlock__input::placeholder {
+  color: #08728767;
 }
 
 .inputBlock__button {
@@ -164,10 +153,5 @@ main {
 .inputBlock__button:hover {
   background-color: #09677a;
   text-decoration: underline;
-}
-
-/* Modifier */
-.inputBlock__function--uppercase {
-  text-transform: uppercase;
 }
 /*# sourceMappingURL=neueKlausur.css.map */
