@@ -9,9 +9,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import de.fhdo.klausurapp.domain.Semester;
 import de.fhdo.klausurapp.dto.AufgabeDto;
+import de.fhdo.klausurapp.dto.BewertungDto;
 import de.fhdo.klausurapp.dto.KlausurDto;
 import de.fhdo.klausurapp.dto.KlausurEintragDto;
 import de.fhdo.klausurapp.dto.StudentDto;
+import de.fhdo.klausurapp.services.AufgabeService;
+import de.fhdo.klausurapp.services.BewertungService;
 import de.fhdo.klausurapp.services.KlausurEintragService;
 import de.fhdo.klausurapp.services.KlausurService;
 import de.fhdo.klausurapp.services.StudentService;
@@ -24,6 +27,8 @@ public class KlausurappApplication {
         KlausurService klausurService = context.getBean(KlausurService.class);
         KlausurEintragService klausurEintragService = context.getBean(KlausurEintragService.class);
         StudentService studentService = context.getBean(StudentService.class);
+        AufgabeService aufgabeService = context.getBean(AufgabeService.class);
+        BewertungService bewertungService = context.getBean(BewertungService.class);
         
         /* Ausgabe alle Klausuren */
         System.out.println(klausurService.lesenKlausuren());
@@ -53,14 +58,23 @@ public class KlausurappApplication {
         aufgaben.add(aufgabe1);
         aufgaben.add(aufgabe2);
         
+        
+        /* Neue Aufgabe für die Klausur erstellen */
+        AufgabeDto aufgabe3 = new AufgabeDto("Aufgabe 3", 51);
+        
+        aufgabe1 = aufgabeService.addAufgabe(aufgabe1);
+        aufgabe2 = aufgabeService.addAufgabe(aufgabe2);
+        aufgabe3 = aufgabeService.addAufgabe(aufgabe3);
+        
         /* Aufgaben der Klausur hinzufügen */
         klausur.setAufgaben(aufgaben);
         
         /* Ausgabe neue Klausur erstellen */
-        System.out.println(klausurService.addKlausur(klausur));
+        klausur = klausurService.addKlausur(klausur);
+        System.out.println(klausur);
         
-        /* Neue Aufgabe für die Klausur erstellen */
-        AufgabeDto aufgabe3 = new AufgabeDto("Aufgabe 3", 51);
+        
+      
         
         /* Ausgabe Klausur eine Aufgabe hinzufügen */
         System.out.println(klausurService.addAufgabe(klausur, aufgabe3));
@@ -72,13 +86,40 @@ public class KlausurappApplication {
         StudentDto student = new StudentDto(1234667L, "Hallo", "Test");
         
         /* Ausgabe Student erzeugen */
-        System.out.println(studentService.addStudent(student));
+        student = studentService.addStudent(student);
+        System.out.println(student);
         
         /* Neuen Klausureintrag erstellen */
         KlausurEintragDto klausurEintrag = new KlausurEintragDto(klausur, student, 2);
+        klausurEintrag.setBewertungen(new ArrayList<BewertungDto>());
         
         /* Ausgabe neuen Klauseintag anlegen */
-        System.out.println(klausurEintragService.addNewKlausurEintrag(klausurEintrag));
+        klausurEintrag = klausurEintragService.addNewKlausurEintrag(klausurEintrag);
+        System.out.println(klausurEintrag);
+        
+        
+        
+        BewertungDto b1 = new BewertungDto(aufgabe1,25.0);
+        BewertungDto b2 = new BewertungDto(aufgabe2,40.0);
+        BewertungDto b3 = new BewertungDto(aufgabe3,30.0);
+        
+        b1 = bewertungService.addBewertung(b1);
+        b2 = bewertungService.addBewertung(b2);
+        b3 = bewertungService.addBewertung(b3);
+        
+        List<BewertungDto> bewertungListe = new ArrayList<BewertungDto>();
+        bewertungListe.add(b1);
+        bewertungListe.add(b2);
+        bewertungListe.add(b3);
+        
+        System.out.print(klausurEintragService.addBewertung(klausurEintrag, bewertungListe));
+        
+       
+        
+        
+        
+        
+        
 	}
 
 }

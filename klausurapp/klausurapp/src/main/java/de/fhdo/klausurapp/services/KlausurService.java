@@ -42,11 +42,18 @@ public class KlausurService {
 		return klausurMapper.klausurToDto(klausurRepository.findById(id).get());
 	}
 	
+	@Transactional
 	public KlausurDto addKlausur(KlausurDto klausur) {
         return klausurMapper.klausurToDto(klausurRepository.save(klausurMapper.dtoToKlausur(klausur)));
     }
 	
+	@Transactional
 	public KlausurDto addAufgabe(KlausurDto klausur, AufgabeDto aufgabe) {
+//		KlausurDto klausurdto = lesenKlausurID(klausur.getId());
+//	if(klausurdto != null)
+//		{
+//			klausurRepository.deleteById(klausur.getId());
+//		}		
 		klausur.getAufgaben().add(aufgabe);
 		Klausur klausurRaw = klausurMapper.dtoToKlausur(klausur);
 		return klausurMapper.klausurToDto(klausurRepository.save(klausurRaw));

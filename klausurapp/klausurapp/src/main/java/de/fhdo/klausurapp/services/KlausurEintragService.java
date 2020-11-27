@@ -31,11 +31,12 @@ public class KlausurEintragService {
 		return klausurEintragMapper.klausurEintragToDto(klausurEintragRepository.save(klausureinEintragRaw));
 	}
 
+	@Transactional
 	public KlausurEintragDto addBewertung(KlausurEintragDto klausurEintrag, List<BewertungDto> bewertungen) {
-		for(BewertungDto bewertung : bewertungen) {
-			klausurEintrag.getBewertungen().add(bewertung);
-		}
-		
+//		for(BewertungDto bewertung : bewertungen) {
+//			klausurEintrag.getBewertungen().add(bewertung);
+//		}
+		klausurEintrag.setBewertungen(bewertungen);
 		KlausurEintrag klausureinEintragRaw = klausurEintragMapper.dtoToKlausurEintrag(klausurEintrag);
 		return klausurEintragMapper.klausurEintragToDto(klausurEintragRepository.save(klausureinEintragRaw));
 	}
