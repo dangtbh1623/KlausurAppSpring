@@ -56,7 +56,57 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- Enforcer Plugin kopiert von https://maven.apache.org/enforcer/maven-enforcer-plugin/usage.html -->
+			<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-enforcer-plugin</artifactId>
+        		<version>3.0.0-M3</version>
+        		<executions>
+          			<execution>
+            			<id>enforce-versions</id>
+            			<phase>validate</phase>
+            			<goals>
+             				<goal>enforce</goal>
+            			</goals>
+            			<configuration>
+              				<rules>
+                				<bannedPlugins>
+                  					<!-- will only display a warning but does not fail the build. -->
+                  					<level>WARN</level>
+                  					<excludes>
+                    					<exclude>org.apache.maven.plugins:maven-verifier-plugin</exclude>
+                  					</excludes>
+                  					<message>Please consider using the maven-invoker-plugin (http://maven.apache.org/plugins/maven-invoker-plugin/)!</message>
+                				</bannedPlugins>
+                				<requireMavenVersion>
+                  					<version>x >= 3.5</version>
+                				</requireMavenVersion>
+                				<requireJavaVersion>
+                  					<version>x >= 11.0</version>
+                				</requireJavaVersion>
+                				<requireOS>
+                  					<family>unix</family>
+                				</requireOS>
+              				</rules>
+            			</configuration>
+          			</execution>
+        		</executions>
+      		</plugin>
+      		<!-- Source Plugin kopiert von https://maven.apache.org/plugins/maven-source-plugin/usage.html -->
+      		<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+       			<artifactId>maven-source-plugin</artifactId>
+        		<version>3.2.0</version>
+        		<executions>
+          			<execution>
+            			<id>attach-sources</id>
+            			<phase>package</phase>
+            			<goals>
+              				<goal>jar-no-fork</goal>
+            			</goals>
+          			</execution>
+        		</executions>
+      		</plugin>
 		</plugins>
 	</build>
-
 </project>
