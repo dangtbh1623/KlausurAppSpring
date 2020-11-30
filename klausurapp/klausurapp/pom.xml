@@ -84,9 +84,6 @@
                 				<requireJavaVersion>
                   					<version>x >= 11.0</version>
                 				</requireJavaVersion>
-                				<requireOS>
-                  					<family>unix</family>
-                				</requireOS>
               				</rules>
             			</configuration>
           			</execution>
