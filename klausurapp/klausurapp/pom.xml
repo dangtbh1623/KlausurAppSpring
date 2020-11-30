@@ -13,6 +13,16 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>klausurapp</name>
 	<description>Spring project for klausurapp.</description>
+	
+	<!-- Hinzugefügt, da sonst das Goal deploy fehlschlägt  -->
+	 <distributionManagement>
+       	<repository>
+         	<id>internal.repo</id>
+         	<name>Internal repo</name>
+         	<url>file://deployFiles</url>
+      	</repository>
+   	</distributionManagement> 
+	
 
 	<properties>
 		<java.version>11</java.version>
@@ -104,6 +114,44 @@
           			</execution>
         		</executions>
       		</plugin>
+      		<!-- SpotBugs kopiert von https://spotbugs.readthedocs.io/en/latest/maven.html -->
+      		<plugin>
+  				<groupId>com.github.spotbugs</groupId>
+ 				<artifactId>spotbugs-maven-plugin</artifactId>
+  				<version>4.1.3</version>
+  				<executions>
+          			<execution>
+            			<id>spotbugs-gui</id>
+            			<phase>test</phase>
+            			<goals>
+              				<goal>gui</goal>
+            			</goals>
+          			</execution>
+        		</executions>
+  				<dependencies>
+    				<!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
+    				<dependency>
+      					<groupId>com.github.spotbugs</groupId>
+      					<artifactId>spotbugs</artifactId>
+      					<version>4.2.0</version>
+    				</dependency>
+  				</dependencies>
+			</plugin>
+			<!-- Dependency Check Maven kopiert von https://jeremylong.github.io/DependencyCheck/dependency-check-maven/ -->
+			<plugin>
+            	<groupId>org.owasp</groupId>
+              	<artifactId>dependency-check-maven</artifactId>
+              	<version>6.0.3</version>
+              	<executions>
+                  	<execution>
+                  		<id>dependency-check-maven</id>
+            			<phase>test</phase>
+                      	<goals>
+                          	<goal>check</goal>
+                      	</goals>
+                  	</execution>
+              	</executions>
+            </plugin>
 		</plugins>
 	</build>
 </project>
