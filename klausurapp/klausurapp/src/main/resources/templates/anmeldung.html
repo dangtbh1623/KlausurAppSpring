@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+	<link rel="stylesheet" href="/anmeldung.css">
+	<meta charset="UTF-8" />
+	<title>Anmeldung</title>
+	<style>
+	</style>
+</head>
+
+<body>
+	<div class="navigation">
+	</div>
+	<div class="container">
+		<div class="itemContainerBlock">
+			<div class="itemContainerBlock__Text">
+				<h1>Melde dich an</h1>
+			</div>
+			<!-- <div>
+				<input type="text" id="username" placeholder="Benutzername">
+			</div>
+			<div>
+				<input type="password" id="password" placeholder="Passwort">
+			</div>
+			<a href="./start.html"><button>Anmelden</button></a> -->
+
+			<!-- Dang: Habe die Anmeldung im Form umgesetzt und berücksichtige auf die Pausabilität. -->
+			<form class="itemContainerBlock__form" action="./start.html">
+				<input class="itemContainerBlock__input" type="text" name="username" placeholder="Benutzername" pattern="[a-z]{5}[0-9]{3}"
+					title="Form: maxtr002" required>
+				<input class="itemContainerBlock__input" type="password" name="password" placeholder="Passwort">
+				<button class= "itemContainerBlock__button" type="submit">Anmelden</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

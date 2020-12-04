@@ -1,0 +1,52 @@
+@import "global";
+
+$buttonColor: rgb(125, 123, 231);
+$buttonRadius: 4px;
+$defaultBorder: 2px solid rgb(0, 0, 0);
+
+@mixin createBorder($width, $style, $color) {
+    border: $width $style $color;
+}
+
+/* Block */
+.studisTabel { 
+    border-collapse: collapse; 
+
+    /* Element */
+    .studisTabel--tableHead{
+        background-color: white;
+    }
+
+    /* Element */
+    .studisTabel--tableRow{
+        &:nth-of-type(even){background: rgb(255, 255, 255)};
+        &:nth-of-type(odd){background: rgb(55, 11, 250)};
+    }
+
+    /* Modifier */
+    .studisTabel--thirdTry{
+        @include createBorder(2px, solid, rgb(255, 0, 0));
+    }
+
+    /* Modifier */
+    .studisTabel--borderRight{
+        border-right: $defaultBorder;
+    }
+
+    /* Modifier */
+    .studisTabel--complete{
+        background-color: rgb(131, 250, 131);
+    }
+}
+
+/* Element */
+.exit__button{
+    background-color: $buttonColor;
+    border-radius: $buttonRadius;
+    border-color: $buttonColor;
+}
+
+/* Modifier */
+.exit__button--floating{
+    float: right;
+}

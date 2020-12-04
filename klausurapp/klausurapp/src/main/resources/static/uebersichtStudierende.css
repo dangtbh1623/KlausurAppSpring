@@ -1,0 +1,89 @@
+@charset "UTF-8";
+/* Definition von MixIns, um wiedervendbare Blöcke zu haben */
+/* Globale Variablen, um das Aussehen schnell, ohne viele Änderungen, anpassen zu können */
+/*Block*/
+.navigation {
+  background-color: #087187;
+  padding: 14px;
+  height: 20px;
+  /* Element */
+  /* Modifier */
+}
+
+.navigation .navigation__item {
+  padding: 14px 16px;
+  font-size: 17px;
+  font-family: arial;
+  display: block;
+  display: inline;
+  color: white;
+  text-decoration: none;
+}
+
+.navigation .navigation__item:hover {
+  background-color: #09677a;
+  text-decoration: underline;
+}
+
+.navigation .navigation__item:active {
+  background-color: #7d7ff0;
+  color: #0b67f1;
+}
+
+.navigation .navigation__item--active {
+  background-color: #6c98bd;
+  color: white;
+  text-decoration: none;
+}
+
+/* Block */
+.body {
+  font-family: arial;
+}
+
+/* Block */
+.studisTabel {
+  border-collapse: collapse;
+  /* Element */
+  /* Element */
+  /* Modifier */
+  /* Modifier */
+  /* Modifier */
+}
+
+.studisTabel .studisTabel--tableHead {
+  background-color: white;
+}
+
+.studisTabel .studisTabel--tableRow:nth-of-type(even) {
+  background: white;
+}
+
+.studisTabel .studisTabel--tableRow:nth-of-type(odd) {
+  background: #370bfa;
+}
+
+.studisTabel .studisTabel--thirdTry {
+  border: 2px solid red;
+}
+
+.studisTabel .studisTabel--borderRight {
+  border-right: 2px solid black;
+}
+
+.studisTabel .studisTabel--complete {
+  background-color: #83fa83;
+}
+
+/* Element */
+.exit__button {
+  background-color: #7d7be7;
+  border-radius: 4px;
+  border-color: #7d7be7;
+}
+
+/* Modifier */
+.exit__button--floating {
+  float: right;
+}
+/*# sourceMappingURL=uebersichtStudierende.css.map */

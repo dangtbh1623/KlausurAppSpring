@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <title>Erstellung einer neuen Klausur</title>
+    <link rel="stylesheet" href="neueKlausur.css">
+    <meta charset="utf-8">
+</head>
+<body class="body">
+    <div class="navigation">
+		<a class = "navigation__item" href="./start.html">Aktiv</a>
+		<a class = "navigation__item" href="./archiv.html">Archiv</a>
+		<a class = "navigation__item navigation__item--active" href="#">Neue Klausur</a>
+    </div>
+    <main>
+        <section class="inputBlock">
+            <div class="inputBlock__function inputBlock__function--uppercase">Eine neue Klausur erstellen</div>
+            <form class ="inputBlock__form" action="./uebersichtPruefung.html" method="GET">
+                <label for="name" class="inputBlock__label">Name</label>
+                <input type="text" name="name" class="inputBlock__input" size="60" maxlength="60" placeholder="Entwurfsmuster und Komponentenbasierte Systeme 2021" required><br>
+                <label for="modulnummer" class="inputBlock__label">Modulnummer</label>
+                <input type="number "name="modulnummer" class="inputBlock__input"  pattern="[0-9]{7}" title="Die Länge der Modulnummer muss 7 sein." placeholder="4851266">
+                <label for="datum" class="inputBlock__label">Datum</label>
+                <input type="date" name="datum" class="inputBlock__input" value="2020-11-11"><br>
+                <label for="pruefungsart" class="inputBlock__label">Prüfungsart</label>
+                <select name="pruefungsart" class="inputBlock__input">
+                    <option value="Muendliche Pruefung">Mündliche Pruefung</option>
+                    <option value="Praktische Pruefung">Praktische Pruefung</option>
+                    <option value="Schriftliche Pruefung">Schriftliche Pruefung</option>
+                </select>
+                <label for="semester" class="inputBlock__label">Semester</label>
+                <select name="semester" class="inputBlock__input">
+                    <option value="Winter">Winter</option>
+                    <option value="Sommer">Sommer</option>
+                </select><br>
+                <button type="submit" class="inputBlock__button">Erstellen</button> 
+            </form>
+        </section>
+    </main>
+</body>
+</html>

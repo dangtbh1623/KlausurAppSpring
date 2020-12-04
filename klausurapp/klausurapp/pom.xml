@@ -91,11 +91,9 @@
 										(http://maven.apache.org/plugins/maven-invoker-plugin/)!</message>
 								</bannedPlugins>
 								<requireMavenVersion>
-									<!-- <version>x >= 3.5</version> "Rang" und "Mean" versehen -->
 									<version>3.5</version>
 								</requireMavenVersion>
 								<requireJavaVersion>
-									<!-- <version>x >= 11.0</version> "Rang" und "Mean" versehen -->
 									<version>11.0</version>
 								</requireJavaVersion>
 							</rules>
@@ -119,10 +117,6 @@
 				</executions>
 			</plugin>
 			<!-- Dependency Check Maven kopiert von https://jeremylong.github.io/DependencyCheck/dependency-check-maven/ -->
-			<!-- <plugin> <groupId>org.owasp</groupId> <artifactId>dependency-check-maven</artifactId> 
-				<version>6.0.3</version> <executions> <execution> <id>dependency-check-maven</id> 
-				<phase>test</phase> <goals> <goal>check</goal> </goals> </execution> </executions> 
-				</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
@@ -133,19 +127,11 @@
 				</configuration>
 				<!-- Applikation und Marver Seite laufen parallel -->
 			</plugin>
-			
-<!-- 			maven-project-info-reports-plugin nicht mehr benötigt, kann delete -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>3.0.0</version>
 			</plugin>
-			<!-- <plugin> <groupId>com.github.spotbugs</groupId> <artifactId>spotbugs-maven-plugin</artifactId> 
-				<version>4.1.3</version> <dependencies> -->
-			<!-- overwrite dependency on spotbugs if you want to specify the version 
-				of spotbugs -->
-			<!-- <dependency> <groupId>com.github.spotbugs</groupId> <artifactId>spotbugs</artifactId> 
-				<version>4.2.0</version> </dependency> </dependencies> </plugin> -->
 		</plugins>
 	</build>
 	<reporting>

@@ -1,0 +1,86 @@
+@import "global";
+
+$buttonColor: rgb(125, 123, 231);
+$buttonRadius: 4px;
+$defaultMargin: 5px;
+$defaultBorder: 2px solid rgb(0, 0, 0);
+
+/* Block */
+.examiner{
+    border-right: $defaultBorder;
+    height: 80%;
+
+    /* Element */
+    .examiner__button{ 
+        background-color: $buttonColor;
+        border-radius: $buttonRadius;
+        border-color: $buttonColor;
+    }
+    
+    /* Element */
+    .examiner__list{ 
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    /* Element */
+    .examiner__listitem{
+        list-style-type: none;
+    }
+}
+
+/* Modifier */
+/* Siehe Kommentar Zeile 48 */
+.examiner--floating{
+    float: left;
+    margin: $defaultMargin;
+}
+
+/* Block */
+.studis{ 
+    border-right: $defaultBorder;
+    height: 80%;
+
+    /* Element */
+    .studis__table{ 
+        border-spacing: 10px;
+    }
+}
+
+/* Modifier */
+/* Aufgrund der HTML Struktur "<div class="studis studis--floating">" kann dieser Modifier nicht in den Block geschaltelt werden. */
+.studis--floating{ 
+    float: left;
+    margin: $defaultMargin;
+}
+
+/* Block */
+.tasks{ 
+    border-right: $defaultBorder;
+    height: 80%;
+}
+
+/* Block*/
+.clef{ 
+    border-bottom: $defaultBorder;
+}
+
+
+/* Block */
+.tasks{ 
+    float: left;
+    margin: $defaultMargin;
+
+    /* Element */
+    .tasks__button{ 
+        background-color: $buttonColor;
+        border-radius: $buttonRadius;
+        border-color: $buttonColor;
+    }
+}
+
+/* Block */
+.clefAndEvaluation{ 
+    float: left;
+    margin: $defaultMargin;
+}

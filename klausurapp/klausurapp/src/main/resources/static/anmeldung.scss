@@ -1,0 +1,88 @@
+@import 'global';
+$darkColor: #087187;
+$hellColor:  #08728767;
+$hoverColor: #09677a;
+ 
+.container {
+    height: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('hintergrund.jpg');
+}
+
+// .itemContainer {
+//     width: 200px;
+// }
+
+// h1 {
+//     align-self: start;
+// }
+
+// input {
+//     height: 20px;
+//     margin-bottom: 10px;
+//     border-color: #087187;
+// }
+
+// button {
+//     background-color: #087187;
+//     color: white;
+// }
+
+// a {
+//     align-self: flex-end;
+// }
+
+// .header {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     width: 801px;
+// }
+
+/* Block */
+.itemContainerBlock{
+    width: 200px;
+
+    /* Element */
+    &__Text{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 801px;
+        h1{
+            align-self: start;
+            color: $darkColor;
+        }
+    }
+    
+    /* Element */
+    &__form {
+        margin-top: 0.1em;
+    }
+
+    /* Element */
+    &__input{
+        height: 20px;
+        margin-bottom: 10px;
+        border-color:$darkColor;
+        &::placeholder{
+            color: $hellColor;
+        }
+    }
+
+    &__button{
+        background-color: $darkColor;
+        color: white;
+        border-radius: 0.75em;
+        font-weight: bold;
+        &:hover{
+            background-color: $hoverColor;
+            text-decoration: underline;
+        }
+    }
+}
+

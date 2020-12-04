@@ -1,0 +1,129 @@
+@charset "UTF-8";
+/* Definition von MixIns, um wiedervendbare Blöcke zu haben */
+/* Globale Variablen, um das Aussehen schnell, ohne viele Änderungen, anpassen zu können */
+/*Block*/
+.navigation {
+  background-color: #087187;
+  padding: 14px;
+  height: 20px;
+  /* Element */
+  /* Modifier */
+}
+
+.navigation .navigation__item {
+  padding: 14px 16px;
+  font-size: 17px;
+  font-family: arial;
+  display: block;
+  display: inline;
+  color: white;
+  text-decoration: none;
+}
+
+.navigation .navigation__item:hover {
+  background-color: #09677a;
+  text-decoration: underline;
+}
+
+.navigation .navigation__item:active {
+  background-color: #7d7ff0;
+  color: #0b67f1;
+}
+
+.navigation .navigation__item--active {
+  background-color: #6c98bd;
+  color: white;
+  text-decoration: none;
+}
+
+/* Block */
+.body {
+  font-family: arial;
+}
+
+.container {
+  height: 900px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url("hintergrund.jpg");
+}
+
+/* Block */
+.itemContainerBlock {
+  width: 200px;
+  /* Element */
+  /* Element */
+  /* Element */
+}
+
+.itemContainerBlock__Text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 801px;
+}
+
+.itemContainerBlock__Text h1 {
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+  color: #087187;
+}
+
+.itemContainerBlock__form {
+  margin-top: 0.1em;
+}
+
+.itemContainerBlock__input {
+  height: 20px;
+  margin-bottom: 10px;
+  border-color: #087187;
+}
+
+.itemContainerBlock__input::-webkit-input-placeholder {
+  color: #08728767;
+}
+
+.itemContainerBlock__input:-ms-input-placeholder {
+  color: #08728767;
+}
+
+.itemContainerBlock__input::-ms-input-placeholder {
+  color: #08728767;
+}
+
+.itemContainerBlock__input::placeholder {
+  color: #08728767;
+}
+
+.itemContainerBlock__button {
+  background-color: #087187;
+  color: white;
+  border-radius: 0.75em;
+  font-weight: bold;
+}
+
+.itemContainerBlock__button:hover {
+  background-color: #09677a;
+  text-decoration: underline;
+}
+/*# sourceMappingURL=anmeldung.css.map */
