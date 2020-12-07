@@ -38,7 +38,7 @@ public class KlausurappApplication {
         
         /* Klausur erstellen */
         KlausurDto klausur = new KlausurDto();
-        klausur.setSemester(Semester.SOSE);
+        klausur.setSemester(Semester.WISE);
         klausur.setVeranstaltung("Test Veranstaltung");
         klausur.setJahr(2020);
         

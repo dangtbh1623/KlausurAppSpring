@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import de.fhdo.klausurapp.dto.AufgabeDto;
@@ -19,36 +21,53 @@ import de.fhdo.klausurapp.services.KlausurService;
 
 //@RestController?
 @Controller
-@RequestMapping("/klausureintrag")
+@RequestMapping("/klausur")
 public class KlausurController {
-	
+
 	KlausurService klausurService;
 	AufgabeService aufgabeService;
-	
+
 	@Autowired
 	public KlausurController(KlausurService klausurService, AufgabeService aufgabeService) {
 		this.klausurService = klausurService;
 		this.aufgabeService = aufgabeService;
 	}
-	
-	@GetMapping
+
+	@GetMapping("/listKlausuren")
 	@ResponseStatus(HttpStatus.OK)
-	public List<KlausurDto> showKlausuren() {
-		return klausurService.lesenKlausuren();
+	public String showKlausuren(Model model) {
+		List<KlausurDto> showKlausuren = klausurService.lesenKlausuren();
+		model.addAttribute("klausuren", showKlausuren);
+		return "start";
 	}
-	
+
+	@GetMapping("/{idDetail}")
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public String showKlausurDetail(@PathVariable String idDetail, Model model) {
+		KlausurDto klausurDto = klausurService.lesenKlausurID(Long.valueOf(idDetail));
+		model.addAttribute("klausur", klausurDto);
+		return "Show Klausur Detail";
+	}
+
+	@GetMapping("/test")
+	@ResponseBody
+	public String showKlausurDetail() {
+		return "Show Klausur Detail";
+	}
+
 	@GetMapping("/{id:[\\d]+}")
 	@ResponseStatus(HttpStatus.OK)
 	public KlausurDto showKlausur(@PathVariable Long id) {
 		return klausurService.lesenKlausurID(id);
 	}
-	
+
 	@PostMapping("/createKlausur")
 	@ResponseStatus(HttpStatus.OK)
 	public KlausurDto addKlausur(@RequestBody() KlausurDto klausurDto) {
 		return klausurService.addKlausur(klausurDto);
 	}
-	
+
 	@PostMapping("/addAufgabe")
 	@ResponseStatus(HttpStatus.OK)
 	public KlausurDto addAufgabe(@RequestBody() KlausurDto klausurDto, @RequestBody() AufgabeDto aufgabeDtoParam) {

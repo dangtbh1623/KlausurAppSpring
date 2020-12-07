@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<link rel="stylesheet" href="start.css">
-	<meta charset="UTF-8" />
-	<title>Aktive Klausuren</title>
-	<style>
-	</style>
+<link rel="stylesheet" href="/start.css">
+<meta charset="UTF-8" />
+<title>Aktive Klausuren</title>
+<style>
+</style>
 </head>
 
 <body class="body">
 	<div class="navigation">
-        <a class="navigation__item navigation__item--active" href="#">Aktiv</a>
-        <a class="navigation__item" href="./archiv.html">Archiv</a>
-        <a class="navigation__item" href="./neueKlausur.html">Neue Klausur</a>
-    </div>
+		<a class="navigation__item navigation__item--active" href="#">Aktiv</a>
+		<a class="navigation__item" href="./archiv.html">Archiv</a> <a
+			class="navigation__item" href="./neueKlausur.html">Neue Klausur</a>
+	</div>
 	<div class="contentContainer">
 		<div class="itemsContainer">
 			<div class="itemsContainer__header">
 				<h1 class="itemsContainer__header--align">Aktive Klausuren</h1>
-				<input class="itemsContainer__header--inputHeight" type="search" id="suche" placeholder="Suche...">
+				<input class="itemsContainer__header--inputHeight" type="search"
+					id="suche" placeholder="Suche...">
 			</div>
 			<div class="itemsContainer__elementWiSe">
 				<div class="itemsContainer__elementWiSeSquare">
-					<p class="itemsContainer__elementWiSeSquare--textColor">WiSe</p>
+					<p class="itemsContainer__elementWiSeSquare--textColor">WISE</p>
 				</div>
 				<div class="itemsContainer__elementWiSeText">
 					<div>Fortgeschrittenes Web-Engineering 2020</div>
@@ -31,7 +32,7 @@
 			</div>
 			<div class="itemsContainer__elementSoSe">
 				<div class="itemsContainer__elementSoSeSquare">
-					<p class="itemsContainer__elementSoSeSquare--textColor">SoSe</p>
+					<p class="itemsContainer__elementSoSeSquare--textColor">SOSE</p>
 				</div>
 				<div class="itemsContainer__elementSoSeText">
 					<div>Entwurfsmuster und Komponentenbasierte Systeme 2020</div>
@@ -39,7 +40,7 @@
 			</div>
 			<div class="itemsContainer__elementSoSe">
 				<div class="itemsContainer__elementSoSeSquare">
-					<p class="itemsContainer__elementSoSeSquare--textColor">SoSe</p>
+					<p class="itemsContainer__elementSoSeSquare--textColor">SOSE</p>
 				</div>
 				<div class="itemsContainer__elementSoSeText">
 					<div>Programmierkurs 1 2020</div>
@@ -47,7 +48,7 @@
 			</div>
 			<div class="itemsContainer__elementWiSe">
 				<div class="itemsContainer__elementWiSeSquare">
-					<p class="itemsContainer__elementWiSeSquare--textColor">WiSe</p>
+					<p class="itemsContainer__elementWiSeSquare--textColor">WISE</p>
 				</div>
 				<div class="itemsContainer__elementWiSeText">
 					<div>Programmierkurs 1 2020</div>
@@ -55,7 +56,7 @@
 			</div>
 			<div class="itemsContainer__elementWiSe">
 				<div class="itemsContainer__elementWiSeSquare">
-					<p class="itemsContainer__elementWiSeSquare--textColor">WiSe</p>
+					<p class="itemsContainer__elementWiSeSquare--textColor">WISE</p>
 				</div>
 				<div class="itemsContainer__elementWiSeText">
 					<div>Entwurfsmuster und Komponentenbasierte Systeme 2020</div>
@@ -63,7 +64,7 @@
 			</div>
 			<div class="itemsContainer__elementSoSe">
 				<div class="itemsContainer__elementSoSeSquare">
-					<p class="itemsContainer__elementSoSeSquare--textColor">SoSe</p>
+					<p class="itemsContainer__elementSoSeSquare--textColor">SOSE</p>
 				</div>
 				<div class="itemsContainer__elementSoSeText">
 					<div>Entwurfsmuster und Komponentenbasierte Systeme 2019</div>
@@ -71,12 +72,60 @@
 			</div>
 			<div class="itemsContainer__elementSoSe">
 				<div class="itemsContainer__elementSoSeSquare">
-					<p class="itemsContainer__elementSoSeSquare--textColor">SoSe</p>
+					<p class="itemsContainer__elementSoSeSquare--textColor">SOSE</p>
 				</div>
 				<div class="itemsContainer__elementSoSeText">
 					<div>Fortgeschrittenes Web-Engineering 2020</div>
 				</div>
 			</div>
+
+
+			<!-- 			<div th:each="klausur : ${klausuren}" -->
+			<!-- 				class="itemsContainer__elementSoSe"> -->
+			<!-- 				<div class="itemsContainer__elementSoSeSquare"> -->
+			<!-- 					<p class="itemsContainer__elementSoSeSquare--textColor" -->
+			<!-- 						th:text="${klausur.semester}">SoSe Test</p> -->
+			<!-- 				</div> -->
+			<!-- 				<div class="itemsContainer__elementSoSeText"> -->
+			<!-- 					<div th:text="${klausur.veranstaltung}">Fortgeschrittenes -->
+			<!-- 						Web-Engineering 2020 Test</div> -->
+			<!-- 				</div> -->
+			<!-- 			</div> -->
+
+
+			<div th:each="klausur : ${klausuren}">
+				<div th:if="${klausur.semester.name() eq 'WISE'}">
+					<div class="itemsContainer__elementWiSe">
+						<div class="itemsContainer__elementWiSeSquare">
+							<p class="itemsContainer__elementWiSeSquare--textColor"
+								th:text="${klausur.semester}">SoSe Test</p>
+						</div>
+						<div class="itemsContainer__elementWiSeText">
+							<div th:text="${klausur.veranstaltung}">Fortgeschrittenes
+								Web-Engineering 2020 Test</div>
+						</div>
+						<a th:href="@{'/klausur/test'}"><button
+								class="itemsContainer__button" th:onclick="@{'/klausur/test'}">Detail</button></a>
+					</div>
+				</div>
+				<div th:if="${klausur.semester.name() eq 'SOSE'}">
+					<div class="itemsContainer__elementSoSe">
+						<div class="itemsContainer__elementSoSeSquare">
+							<p class="itemsContainer__elementSoSeSquare--textColor"
+								th:text="${klausur.semester}">SoSe Test</p>
+						</div>
+						<div class="itemsContainer__elementSoSeText">
+							<div th:text="${klausur.veranstaltung}">Fortgeschrittenes
+								Web-Engineering 2020 Test</div>
+						</div>
+						<a th:href="@{'/klausur/test'}"><button
+								class="itemsContainer__button" th:onclick="@{'/klausur/test'}">Detail</button></a>
+					</div>
+				</div>
+			</div>
+
+
+
 		</div>
 	</div>
 </body>
