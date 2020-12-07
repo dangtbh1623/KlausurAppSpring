@@ -43,11 +43,12 @@ public class KlausurController {
 
 	@GetMapping("/{idDetail}")
 	@ResponseStatus(HttpStatus.OK)
-	@ResponseBody
 	public String showKlausurDetail(@PathVariable String idDetail, Model model) {
 		KlausurDto klausurDto = klausurService.lesenKlausurID(Long.valueOf(idDetail));
+		List<AufgabeDto> aufgaben = klausurDto.getAufgaben();
 		model.addAttribute("klausur", klausurDto);
-		return "Show Klausur Detail";
+		model.addAttribute("aufgaben", aufgaben);
+		return "klausurDetail";
 	}
 
 	@GetMapping("/test")
@@ -56,11 +57,11 @@ public class KlausurController {
 		return "Show Klausur Detail";
 	}
 
-	@GetMapping("/{id:[\\d]+}")
-	@ResponseStatus(HttpStatus.OK)
-	public KlausurDto showKlausur(@PathVariable Long id) {
-		return klausurService.lesenKlausurID(id);
-	}
+//	@GetMapping("/{id:[\\d]+}")
+//	@ResponseStatus(HttpStatus.OK)
+//	public KlausurDto showKlausur(@PathVariable Long id) {
+//		return klausurService.lesenKlausurID(id);
+//	}
 
 	@PostMapping("/createKlausur")
 	@ResponseStatus(HttpStatus.OK)

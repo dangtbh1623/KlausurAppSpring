@@ -104,8 +104,8 @@
 							<div th:text="${klausur.veranstaltung}">Fortgeschrittenes
 								Web-Engineering 2020 Test</div>
 						</div>
-						<a th:href="@{'/klausur/test'}"><button
-								class="itemsContainer__button" th:onclick="@{'/klausur/test'}">Detail</button></a>
+						<a th:href="@{'/klausur/' + ${klausur.id}}"><button
+								class="itemsContainer__button" >Detail</button></a>
 					</div>
 				</div>
 				<div th:if="${klausur.semester.name() eq 'SOSE'}">
@@ -118,8 +118,8 @@
 							<div th:text="${klausur.veranstaltung}">Fortgeschrittenes
 								Web-Engineering 2020 Test</div>
 						</div>
-						<a th:href="@{'/klausur/test'}"><button
-								class="itemsContainer__button" th:onclick="@{'/klausur/test'}">Detail</button></a>
+						<a th:href="@{'/klausur/' + ${klausur.id}}"><button
+								class="itemsContainer__button" >Detail</button></a>
 					</div>
 				</div>
 			</div>
