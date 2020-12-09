@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +34,7 @@ public class KlausurController {
 		this.aufgabeService = aufgabeService;
 	}
 
+	//Fertig
 	@GetMapping("/listKlausuren")
 	@ResponseStatus(HttpStatus.OK)
 	public String showKlausuren(Model model) {
@@ -41,6 +43,7 @@ public class KlausurController {
 		return "start";
 	}
 
+	// Fertig
 	@GetMapping("/{idDetail}")
 	@ResponseStatus(HttpStatus.OK)
 	public String showKlausurDetail(@PathVariable String idDetail, Model model) {
@@ -50,11 +53,12 @@ public class KlausurController {
 		model.addAttribute("aufgaben", aufgaben);
 		return "klausurDetail";
 	}
-
+	
+	//Nur für Testzweck
 	@GetMapping("/test")
 	@ResponseBody
 	public String showKlausurDetail() {
-		return "Show Klausur Detail";
+		return "Muss noch implementieren !!!";
 	}
 
 //	@GetMapping("/{id:[\\d]+}")
@@ -63,12 +67,28 @@ public class KlausurController {
 //		return klausurService.lesenKlausurID(id);
 //	}
 
-	@PostMapping("/createKlausur")
+//	@PostMapping("/createKlausur")
+//	@ResponseStatus(HttpStatus.OK)
+//	public KlausurDto addKlausur(@RequestBody() KlausurDto klausurDto) {
+//		return klausurService.addKlausur(klausurDto);
+//	}
+	
+	//Fertig
+	@GetMapping("/createKlausur")
 	@ResponseStatus(HttpStatus.OK)
-	public KlausurDto addKlausur(@RequestBody() KlausurDto klausurDto) {
-		return klausurService.addKlausur(klausurDto);
+	public String addKlausurForm(Model model) {
+		model.addAttribute("neuKlausur", new KlausurDto());
+		return "neueKlausur";
 	}
 
+	//Fertig
+	@PostMapping("/createKlausur")
+	public String addKlausur(@ModelAttribute KlausurDto neuKlausur) {
+		KlausurDto addklausur = klausurService.addKlausur(neuKlausur);
+		return "redirect:/klausur/listKlausuren";
+	}
+
+	//ToDo :D
 	@PostMapping("/addAufgabe")
 	@ResponseStatus(HttpStatus.OK)
 	public KlausurDto addAufgabe(@RequestBody() KlausurDto klausurDto, @RequestBody() AufgabeDto aufgabeDtoParam) {
