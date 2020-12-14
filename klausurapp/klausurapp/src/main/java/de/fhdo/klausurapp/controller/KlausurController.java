@@ -35,6 +35,7 @@ public class KlausurController {
 	}
 
 	//Fertig
+	//Geb alle Klausuren in der Tabelle aus
 	@GetMapping("/listKlausuren")
 	@ResponseStatus(HttpStatus.OK)
 	public String showKlausuren(Model model) {
@@ -44,6 +45,7 @@ public class KlausurController {
 	}
 
 	// Fertig
+	// Geb die Infos einer bestimmten Klausur aus.
 	@GetMapping("/{idDetail}")
 	@ResponseStatus(HttpStatus.OK)
 	public String showKlausurDetail(@PathVariable String idDetail, Model model) {
@@ -51,14 +53,25 @@ public class KlausurController {
 		List<AufgabeDto> aufgaben = klausurDto.getAufgaben();
 		model.addAttribute("klausur", klausurDto);
 		model.addAttribute("aufgaben", aufgaben);
-		return "klausurDetail";
+		model.addAttribute("neuAufgabe", new AufgabeDto());
+		return "uebersichtPruefung";
+	}
+	
+	// Fertig
+	//add Aufgabe zu einer Klausur. Die Id einer Klausur wird über dynamische Path gegeben.
+	@PostMapping("/addAuf/{klausurID}")
+	public String addAufgabe(@ModelAttribute AufgabeDto neuAufgabe, @PathVariable String klausurID) {
+		AufgabeDto addAuf = aufgabeService.addAufgabe(neuAufgabe);
+		KlausurDto klausurDto = klausurService.lesenKlausurID(Long.valueOf(klausurID));
+		KlausurDto addAufgabeZuklausur = klausurService.addAufgabe(klausurDto, addAuf);
+		return "redirect:/klausur/" + addAufgabeZuklausur.getId();
 	}
 	
 	//Nur für Testzweck
 	@GetMapping("/test")
 	@ResponseBody
 	public String showKlausurDetail() {
-		return "Muss noch implementieren !!!";
+		return "Muss noch implementieren !!!!";
 	}
 
 //	@GetMapping("/{id:[\\d]+}")
@@ -74,6 +87,7 @@ public class KlausurController {
 //	}
 	
 	//Fertig
+	// Funktion zur Klausurerstellung. Zur Verbindung zwischen Entität und Thymeleaf
 	@GetMapping("/createKlausur")
 	@ResponseStatus(HttpStatus.OK)
 	public String addKlausurForm(Model model) {
@@ -82,18 +96,19 @@ public class KlausurController {
 	}
 
 	//Fertig
+	// Funktion zur Klausurerstellung. Receive ein Objekt eines Typs KlausurDto von Frontend über PostMethode 
 	@PostMapping("/createKlausur")
 	public String addKlausur(@ModelAttribute KlausurDto neuKlausur) {
 		KlausurDto addklausur = klausurService.addKlausur(neuKlausur);
-		return "redirect:/klausur/listKlausuren";
+		return "redirect:/klausur/" + addklausur.getId();
 	}
 
-	//ToDo :D
-	@PostMapping("/addAufgabe")
-	@ResponseStatus(HttpStatus.OK)
-	public KlausurDto addAufgabe(@RequestBody() KlausurDto klausurDto, @RequestBody() AufgabeDto aufgabeDtoParam) {
-		AufgabeDto aufgabeDto = aufgabeService.addAufgabe(aufgabeDtoParam);
-		return klausurService.addAufgabe(klausurDto, aufgabeDto);
-	}
+//	//ToDo :D
+//	@PostMapping("/addAufgabe")
+//	@ResponseStatus(HttpStatus.OK)
+//	public KlausurDto addAufgabe(@RequestBody() KlausurDto klausurDto, @RequestBody() AufgabeDto aufgabeDtoParam) {
+//		AufgabeDto aufgabeDto = aufgabeService.addAufgabe(aufgabeDtoParam);
+//		return klausurService.addAufgabe(klausurDto, aufgabeDto);
+//	}
 
 }

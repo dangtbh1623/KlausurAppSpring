@@ -114,6 +114,31 @@
   border-color: #7d7be7;
 }
 
+.tasks__table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 2em;
+}
+
+.tasks__table__tr:nth-child(even) {
+  background-color: #d7f4faa8;
+}
+
+.tasks__table__tr:hover {
+  background-color: #d7f4faec;
+}
+
+.tasks__table__th {
+  text-align: left;
+  padding: 8px;
+  color: #09677a;
+}
+
+.tasks__table__td {
+  text-align: left;
+  padding: 8px;
+}
+
 /* Block */
 .clefAndEvaluation {
   float: left;

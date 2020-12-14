@@ -70,12 +70,40 @@ $defaultBorder: 2px solid rgb(0, 0, 0);
 .tasks{ 
     float: left;
     margin: $defaultMargin;
+    
 
     /* Element */
     .tasks__button{ 
-        background-color: $buttonColor;
-        border-radius: $buttonRadius;
-        border-color: $buttonColor;
+        background-color: #087187;
+  color: white;
+  border-radius: 0.75em;
+  float: right;
+  font-weight: bold;
+  margin-top: 0.75em;
+    }
+    
+    &__table{
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 2em;
+        
+        
+        &__tr:nth-child(even){
+            background-color: #d7f4faa8;
+        }
+
+        &__tr:hover{
+            background-color: #d7f4faec;
+        }
+        &__th{
+            text-align: left;
+            padding: 8px;
+            color: #09677a;
+          }
+        &__td{
+            text-align: left;
+            padding: 8px;
+          }
     }
 }
 

@@ -109,9 +109,37 @@
 }
 
 .tasks .tasks__button {
-  background-color: #7d7be7;
-  border-radius: 4px;
-  border-color: #7d7be7;
+  background-color: #087187;
+  color: white;
+  border-radius: 0.75em;
+  float: right;
+  font-weight: bold;
+  margin-top: 0.75em;
+}
+
+.tasks__table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 2em;
+}
+
+.tasks__table__tr:nth-child(even) {
+  background-color: #d7f4faa8;
+}
+
+.tasks__table__tr:hover {
+  background-color: #d7f4faec;
+}
+
+.tasks__table__th {
+  text-align: left;
+  padding: 8px;
+  color: #09677a;
+}
+
+.tasks__table__td {
+  text-align: left;
+  padding: 8px;
 }
 
 /* Block */
