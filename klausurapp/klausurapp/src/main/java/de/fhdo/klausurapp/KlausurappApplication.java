@@ -113,13 +113,6 @@ public class KlausurappApplication {
         bewertungListe.add(b3);
         
         System.out.print(klausurEintragService.addBewertung(klausurEintrag, bewertungListe));
-        
-       
-        
-        
-        
-        
-        
 	}
 
 }

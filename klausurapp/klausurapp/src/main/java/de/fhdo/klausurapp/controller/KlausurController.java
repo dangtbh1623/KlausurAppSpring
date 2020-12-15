@@ -17,8 +17,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import de.fhdo.klausurapp.dto.AufgabeDto;
 import de.fhdo.klausurapp.dto.KlausurDto;
+import de.fhdo.klausurapp.dto.KlausurEintragDto;
+import de.fhdo.klausurapp.dto.StudentDto;
 import de.fhdo.klausurapp.services.AufgabeService;
+import de.fhdo.klausurapp.services.KlausurEintragService;
 import de.fhdo.klausurapp.services.KlausurService;
+import de.fhdo.klausurapp.services.StudentService;
 
 //@RestController?
 @Controller
@@ -27,11 +31,15 @@ public class KlausurController {
 
 	KlausurService klausurService;
 	AufgabeService aufgabeService;
+	StudentService studentService;
+	KlausurEintragService klausurEintragService;
 
 	@Autowired
-	public KlausurController(KlausurService klausurService, AufgabeService aufgabeService) {
+	public KlausurController(KlausurService klausurService, AufgabeService aufgabeService, StudentService studentService, KlausurEintragService klausurEintragService) {
 		this.klausurService = klausurService;
 		this.aufgabeService = aufgabeService;
+		this.studentService = studentService;
+		this.klausurEintragService = klausurEintragService;
 	}
 
 	//Fertig
@@ -51,40 +59,24 @@ public class KlausurController {
 	public String showKlausurDetail(@PathVariable String idDetail, Model model) {
 		KlausurDto klausurDto = klausurService.lesenKlausurID(Long.valueOf(idDetail));
 		List<AufgabeDto> aufgaben = klausurDto.getAufgaben();
+		List<KlausurEintragDto> klausurEintraege =  klausurEintragService.klausurEintragZuKlausurLesen(klausurDto);
 		model.addAttribute("klausur", klausurDto);
 		model.addAttribute("aufgaben", aufgaben);
+		model.addAttribute("klausurEintraege", klausurEintraege);
 		model.addAttribute("neuAufgabe", new AufgabeDto());
+		model.addAttribute("neuerStudi", new StudentDto());
 		return "uebersichtPruefung";
 	}
 	
 	// Fertig
 	//add Aufgabe zu einer Klausur. Die Id einer Klausur wird über dynamische Path gegeben.
-	@PostMapping("/addAuf/{klausurID}")
+	@PostMapping("/addAufgabe/{klausurID}")
 	public String addAufgabe(@ModelAttribute AufgabeDto neuAufgabe, @PathVariable String klausurID) {
 		AufgabeDto addAuf = aufgabeService.addAufgabe(neuAufgabe);
 		KlausurDto klausurDto = klausurService.lesenKlausurID(Long.valueOf(klausurID));
 		KlausurDto addAufgabeZuklausur = klausurService.addAufgabe(klausurDto, addAuf);
 		return "redirect:/klausur/" + addAufgabeZuklausur.getId();
 	}
-	
-	//Nur für Testzweck
-	@GetMapping("/test")
-	@ResponseBody
-	public String showKlausurDetail() {
-		return "Muss noch implementieren !!!!";
-	}
-
-//	@GetMapping("/{id:[\\d]+}")
-//	@ResponseStatus(HttpStatus.OK)
-//	public KlausurDto showKlausur(@PathVariable Long id) {
-//		return klausurService.lesenKlausurID(id);
-//	}
-
-//	@PostMapping("/createKlausur")
-//	@ResponseStatus(HttpStatus.OK)
-//	public KlausurDto addKlausur(@RequestBody() KlausurDto klausurDto) {
-//		return klausurService.addKlausur(klausurDto);
-//	}
 	
 	//Fertig
 	// Funktion zur Klausurerstellung. Zur Verbindung zwischen Entität und Thymeleaf
@@ -102,13 +94,17 @@ public class KlausurController {
 		KlausurDto addklausur = klausurService.addKlausur(neuKlausur);
 		return "redirect:/klausur/" + addklausur.getId();
 	}
-
-//	//ToDo :D
-//	@PostMapping("/addAufgabe")
-//	@ResponseStatus(HttpStatus.OK)
-//	public KlausurDto addAufgabe(@RequestBody() KlausurDto klausurDto, @RequestBody() AufgabeDto aufgabeDtoParam) {
-//		AufgabeDto aufgabeDto = aufgabeService.addAufgabe(aufgabeDtoParam);
-//		return klausurService.addAufgabe(klausurDto, aufgabeDto);
-//	}
+	
+	//Fertig
+	@PostMapping("/addStudi/{klausurID}")
+	public String addStudi(@ModelAttribute StudentDto neuerStudi, @PathVariable String klausurID) {
+		StudentDto addedStudi = this.studentService.addStudent(neuerStudi);
+		KlausurDto klausurDto = klausurService.lesenKlausurID(Long.valueOf(klausurID));
+		//Wie komme ich an den Versuch? Im Formular kann ich kein Versuch übergeben, wegen dem StudentenObjekt.
+		//Wie macht man das mit dem hidden Field, dass beim letzten mal angesprochen wurde?
+		KlausurEintragDto neuerKlausurEintragDto = new KlausurEintragDto(klausurDto, addedStudi,1);
+		klausurEintragService.addNewKlausurEintrag(neuerKlausurEintragDto);
+		return "redirect:/klausur/" + klausurDto.getId();
+	}
 
 }

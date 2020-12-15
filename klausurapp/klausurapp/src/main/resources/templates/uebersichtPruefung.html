@@ -29,36 +29,31 @@
 			hinzufügen</button>
 	</div>
 	<div class="studis studis--floating">
-		<h1>Studis (5)</h1>
+		<h1 th:text="${'Studis (' + klausurEintraege.size() + ')'} ">Studis (Anzahl)</h1>
 		<table class="studis__table">
 			<tbody>
-				<tr>
-					<td>Thorsten</td>
-					<td>Schultheiss</td>
-					<td>8093314</td>
-				</tr>
-				<tr>
-					<td>Marko</td>
-					<td>Seiler</td>
-					<td>7712179</td>
-				</tr>
-				<tr>
-					<td>Doreen</td>
-					<td>Reniger</td>
-					<td>7051014</td>
-				</tr>
-				<tr>
-					<td>Barbara</td>
-					<td>Amsel</td>
-					<td>2541988</td>
-				</tr>
-				<tr>
-					<td>Erik</td>
-					<td>Fisher</td>
-					<td>6980047</td>
+				<tr th:each="klausurEintrag : ${klausurEintraege}">
+					<td th:text="${klausurEintrag.student.vorname}">Vorname</td>
+					<td th:text="${klausurEintrag.student.nachname}">Nachname</td>
+					<td th:text="${klausurEintrag.student.matrikelNr}">1234567</td>
 				</tr>
 			</tbody>
 		</table>
+				<form action="/action_page.php" th:action="@{'/klausur/addStudi/' + ${klausur.id}}" th:object="${neuerStudi}" method="POST"> 
+			<fieldset>		
+				<input type="text" name="vorname" th:field="*{vorname}" size="10" maxlength="15"
+					placeholder="Vorname"
+					required>
+					<input type="text" name="nachname" th:field="*{nachname}" size="10" maxlength="15"
+					placeholder="Nachname"
+					required>
+					<input type="number" name="matrikelNr" th:field="*{matrikelNr}" size="15" maxlength="15"
+					placeholder="MatrikelNr."
+					required>
+					<br>
+					<button type="submit" class="tasks__button">Add</button>								
+			</fieldset>
+		</form>
 	</div>
 	<div class="tasks">
 		<h1>Aufgaben</h1>
@@ -72,7 +67,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<form action="/action_page.php" th:action="@{'/klausur/addAuf/' + ${klausur.id}}" th:object="${neuAufgabe}" method="POST"> 
+		<form action="/action_page.php" th:action="@{'/klausur/addAufgabe/' + ${klausur.id}}" th:object="${neuAufgabe}" method="POST"> 
 			<fieldset>
 				<legend>Hinzufügen</legend>			
 				<input type="text" name="name" th:field="*{name}" size="15" maxlength="15"
