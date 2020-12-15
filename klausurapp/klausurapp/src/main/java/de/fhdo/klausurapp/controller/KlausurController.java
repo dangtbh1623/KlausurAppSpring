@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import de.fhdo.klausurapp.dto.AufgabeDto;
+import de.fhdo.klausurapp.dto.BewertungDto;
 import de.fhdo.klausurapp.dto.KlausurDto;
 import de.fhdo.klausurapp.dto.KlausurEintragDto;
 import de.fhdo.klausurapp.dto.StudentDto;
@@ -95,7 +96,7 @@ public class KlausurController {
 		return "redirect:/klausur/" + addklausur.getId();
 	}
 	
-	//Fertig
+	
 	@PostMapping("/addStudi/{klausurID}")
 	public String addStudi(@ModelAttribute StudentDto neuerStudi, @PathVariable String klausurID) {
 		StudentDto addedStudi = this.studentService.addStudent(neuerStudi);
@@ -105,6 +106,25 @@ public class KlausurController {
 		KlausurEintragDto neuerKlausurEintragDto = new KlausurEintragDto(klausurDto, addedStudi,1);
 		klausurEintragService.addNewKlausurEintrag(neuerKlausurEintragDto);
 		return "redirect:/klausur/" + klausurDto.getId();
+	}
+	
+	@GetMapping("/bewertung/{klausurID}")
+	@ResponseStatus(HttpStatus.OK)
+	public String showKlausurEintraege(Model model, @PathVariable String klausurID) {
+		KlausurDto klausurDto = klausurService.lesenKlausurID(Long.valueOf(klausurID));
+		List<KlausurEintragDto> klausurEintraege = klausurEintragService.klausurEintragZuKlausurLesen(klausurDto);
+		model.addAttribute("klausur", klausurDto);
+		model.addAttribute("klausurEintraege", klausurEintraege);
+		model.addAttribute("neueBewertung", new BewertungDto());
+		return "uebersichtStudierende";
+	}
+	
+	@PostMapping("/bewertung/{klausurID}")
+	public String addBewertung(@ModelAttribute BewertungDto bewertungDto, @PathVariable String klausurID) {
+		KlausurDto klausurDto = klausurService.lesenKlausurID(Long.valueOf(klausurID));
+		List<KlausurEintragDto> klausurEintraege = klausurEintragService.klausurEintragZuKlausurLesen(klausurDto);
+		//Wie komme ich an den Studenten in der entsprechenden Zeile aus dem Formular?!
+		return "redirect:/klausur/bewertung/" + klausurDto.getId();
 	}
 
 }

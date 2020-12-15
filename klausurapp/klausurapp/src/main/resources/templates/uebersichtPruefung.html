@@ -151,8 +151,13 @@
 						<td>Durchschnitt:</td>
 						<td colspan="11">--</td>
 					</tr>
+					
 				</tbody>
 			</table>
+			<!-- Wie navigiere ich mit einem Button?! :D -->
+			<button type="button" th:href="@{'/klausur/bewertung/' + ${klausur.id}}">
+				Prüfung bewerten
+			</button>
 		</div>
 	</div>
 </body>
