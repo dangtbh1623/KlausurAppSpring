@@ -2,60 +2,87 @@
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/uebersichtStudierende.css" media="screen" />
-    <meta charset="UTF-8" />
-    <title th:text="${klausur.veranstaltung} + ' ' + ${klausur.jahr}">Testname Jahr</title>
+<link rel="stylesheet" type="text/css" href="/uebersichtStudierende.css"
+	media="screen" />
+<meta charset="UTF-8" />
+<title th:text="${klausur.veranstaltung} + ' ' + ${klausur.jahr}">Testname
+	Jahr</title>
 </head>
 
 <body class="body">
-    <div class="navigation">
-        <a class="navigation__item" href="./start.html">Aktiv</a>
-        <a class="navigation__item" href="./archiv.html">Archiv</a>
-        <a class="navigation__item" href="./neueKlausur.html">Neue Klausur</a>
-        <a class="navigation__item navigation__item--active" th:text="${klausur.veranstaltung} + ' ' + ${klausur.jahr}">Testname Jahr</a>
-        <a class="navigation__item" th:text="${klausur.semester}">Semester</a>
-    </div>
-    <br>
-    <table class="studisTabel">
-        <thead class="studisTabel--tableHead">
-            <tr>
-                <th>Mat. Nr.</th>
-                <th>Nachname</th>
-                <th>Vorname</th>
-                <th class="studisTabel--borderRight">Versuch</th>
-                <th th:each="aufgabe : ${klausur.aufgaben}" th:text="${aufgabe.name}">AufgabenName</th>
-                <th class="studisTabel--borderRight">Gesamt</th>
-                <th>Note</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="studisTabel--tableRow" th:each="klausurEintrag : ${klausurEintraege}">
-                <td th:text="${klausurEintrag.student.matrikelNr}">MatrikelNr</td>
-                <td th:text="${klausurEintrag.student.nachname}">Nachname</td>
-                <td th:text="${klausurEintrag.student.vorname}">Vorname</td>
-                <td class="studisTabel--borderRight" th:text="${klausurEintrag.versuch}">Versuch</td>
-                <!-- Bewertungen sind leider noch nicht vorhanden, deswegen sieht das in der Ansicht komisch aus.
+	<div class="navigation">
+		<a class="navigation__item" href="./start.html"
+			th:href="@{/klausur/listKlausuren}">Aktiv</a> <a
+			class="navigation__item" href="./archiv.html"
+			th:href="@{/klausur/test}">Archiv</a> <a class="navigation__item"
+			href="./neueKlausur.html" th:href="@{/klausur/createKlausur}">Neue
+			Klausur</a> <a class="navigation__item navigation__item--active"
+			th:text="|${klausur.veranstaltung} ${klausur.semester} ${klausur.jahr}|">Entwurfsmuser
+			und Komponentenbasierte Systeme 2021</a>
+	</div>
+	<br>
+	<table class="studisTabel">
+		<thead class="studisTabel--tableHead">
+			<tr>
+				<th>Mat. Nr.</th>
+				<th>Nachname</th>
+				<th>Vorname</th>
+				<th class="studisTabel--borderRight">Versuch</th>
+				<th th:each="aufgabe, iter : ${klausur.aufgaben}" th:class="${iter.last}? 'studisTabel--borderRight'"
+					th:text="${aufgabe.name}">AufgabenName</th>
+				<th class="studisTabel--borderRight">Gesamt</th>
+				<th class="studisTabel--borderRight">Note</th>
+				<th>Function</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="studisTabel--tableRow"
+				th:each="klausurEintrag : ${klausurEintraege}">
+				<td th:text="${klausurEintrag.student.matrikelNr}">MatrikelNr</td>
+				<td th:text="${klausurEintrag.student.nachname}">Nachname</td>
+				<td th:text="${klausurEintrag.student.vorname}">Vorname</td>
+				<td class="studisTabel--borderRight"
+					th:text="${klausurEintrag.versuch}">Versuch</td>
+				<!-- Bewertungen sind leider noch nicht vorhanden, deswegen sieht das in der Ansicht komisch aus.
                 Es gibt mMn zwei Möglichkeiten, beim hinzufügen von Studis wird für alle Aufgaben eine Bewertung hinzugefügt,
                 dabei wäre zu klären wie man es handhabt, wenn Aufgaben nachträglich hinzugefügt werden.
                 2. Möglichkeit, man geht davon aus, dass es keine Bewertungen gibt, legt für jede Zeile ein Formular an und iteriert
                 über "klausur.aufgaben" um die richtige Anzahl an Aufgaben rauszubekommen. -->
-                <!-- <td th:each="bewertung : ${klausurEintrag.bewertungen}" th:text="${bewertung.punkte} + ' / '+ bewertung.aufgabe.maxPunkte}">Punkte / MaxPunkte</td> -->
-                <td th:each="aufgabe : ${klausur.aufgaben}">
-                	<form action="/action_page.php" th:action="@{'/klausur/bewertung/' + ${klausur.id}/}" th:object="${neueBewertung}" method="POST"> 
-						<fieldset>		
-							<input type="number" name="punkte" th:field="*{punkte}" size="4" maxlength="5" placeholder="" required>
-							<button type="submit" class="tasks__button">Add</button>								
+				<!-- <td th:each="bewertung : ${klausurEintrag.bewertungen}" th:text="${bewertung.punkte} + ' / '+ bewertung.aufgabe.maxPunkte}">Punkte / MaxPunkte</td> -->
+				<!--<td th:each="aufgabe : ${klausur.aufgaben}">
+					<form action="/action_page.php"
+						th:action="@{'/klausur/bewertung/' + ${klausur.id}/}"
+						th:object="${neueBewertung}" method="POST">
+						<fieldset>
+							<input type="number" name="punkte" th:field="*{punkte}" size="4"
+								maxlength="5" placeholder="" required>
+							<button type="submit" class="tasks__button">Add</button>
 						</fieldset>
 					</form>
-                </td>
-                <td class="studisTabel--borderRight">Fehlt</td>
-                <td >Fehlt</td>
-            </tr>
-        </tbody>
-    </table>
-    <button class="exit__button exit__button--floating" type="button">
-        Beenden
-    </button>
+                </td>-->
+
+
+				<!--
+                    <td th:each="bewertung : ${klausurEintrag.bewertungen}" th:text="${bewertung.punkte + ' / '+ bewertung.aufgabe.maxPunkte}"> 15 </td>											
+				<td class="studisTabel--borderRight">Fehlt</td>
+                <td>Fehlt</td>
+                -->
+				<td th:if="${!klausurEintrag.bewertungen.isEmpty()}"
+					th:each="bewertung, iter : ${klausurEintrag.bewertungen}" th:class="${iter.last}? 'studisTabel--borderRight'"
+					th:text="${bewertung.punkte + '/'+ bewertung.aufgabe.maxPunkte}">
+					15</td>
+				<td th:if="${klausurEintrag.bewertungen.isEmpty()}"
+					th:each="aufgabe, iter : ${klausur.aufgaben}" th:class="${iter.last}? 'studisTabel--borderRight'"
+					th:text="${'--- / '+ aufgabe.maxPunkte}">
+					15</td>
+				<td class="studisTabel--borderRight">Fehlt</td>
+				<td class="studisTabel--borderRight">Fehlt</td>
+				<td><a th:href="@{'/klausur/' + ${klausur.id}}">Bewerten</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<button class="exit__button exit__button--floating" type="button">
+		Beenden</button>
 </body>
 
 </html>

@@ -103,8 +103,7 @@ public class KlausurController {
 		KlausurDto klausurDto = klausurService.lesenKlausurID(Long.valueOf(klausurID));
 		//Wie komme ich an den Versuch? Im Formular kann ich kein Versuch übergeben, wegen dem StudentenObjekt.
 		//Wie macht man das mit dem hidden Field, dass beim letzten mal angesprochen wurde?
-		KlausurEintragDto neuerKlausurEintragDto = new KlausurEintragDto(klausurDto, addedStudi,1);
-		klausurEintragService.addNewKlausurEintrag(neuerKlausurEintragDto);
+		KlausurEintragDto neuerKlausurEintragDto = klausurEintragService.addNewKlausurEintrag(new KlausurEintragDto(klausurDto, addedStudi,1));
 		return "redirect:/klausur/" + klausurDto.getId();
 	}
 	

@@ -32,19 +32,26 @@
 		<h1 th:text="${'Studis (' + klausurEintraege.size() + ')'} ">Studis (Anzahl)</h1>
 		<table class="studis__table">
 			<tbody>
-				<tr th:each="klausurEintrag : ${klausurEintraege}">
-					<td th:text="${klausurEintrag.student.vorname}">Vorname</td>
-					<td th:text="${klausurEintrag.student.nachname}">Nachname</td>
+				<tr>
+					<th class="tasks__table__th">Vorname</td>
+					<th class="tasks__table__th">Nachname</td>
+					<th class="tasks__table__th">MNr.</td>
+				</tr>
+				<tr class="tasks__table__tr" th:each="klausurEintrag : ${klausurEintraege}">
+					<td class="tasks__table__td" th:text="${klausurEintrag.student.vorname}">Vorname</td>
+					<td class="tasks__table__td" th:text="${klausurEintrag.student.nachname}">Nachname</td>
 					<td th:text="${klausurEintrag.student.matrikelNr}">1234567</td>
 				</tr>
 			</tbody>
 		</table>
+		<div class="tasks">
 				<form action="/action_page.php" th:action="@{'/klausur/addStudi/' + ${klausur.id}}" th:object="${neuerStudi}" method="POST"> 
-			<fieldset>		
-				<input type="text" name="vorname" th:field="*{vorname}" size="10" maxlength="15"
+			<fieldset>
+				<legend>Studi Hinzufügen</legend>		
+				<input type="text" name="vorname" th:field="*{vorname}" size="10" maxlength="20"
 					placeholder="Vorname"
 					required>
-					<input type="text" name="nachname" th:field="*{nachname}" size="10" maxlength="15"
+					<input type="text" name="nachname" th:field="*{nachname}" size="10" maxlength="20"
 					placeholder="Nachname"
 					required>
 					<input type="number" name="matrikelNr" th:field="*{matrikelNr}" size="15" maxlength="15"
@@ -54,6 +61,7 @@
 					<button type="submit" class="tasks__button">Add</button>								
 			</fieldset>
 		</form>
+		</div>
 	</div>
 	<div class="tasks">
 		<h1>Aufgaben</h1>
@@ -69,7 +77,7 @@
 		</table>
 		<form action="/action_page.php" th:action="@{'/klausur/addAufgabe/' + ${klausur.id}}" th:object="${neuAufgabe}" method="POST"> 
 			<fieldset>
-				<legend>Hinzufügen</legend>			
+				<legend>Aufgabe Hinzufügen</legend>			
 				<input type="text" name="name" th:field="*{name}" size="15" maxlength="15"
 					placeholder="Aufgabennamen"
 					required><br><br>
@@ -154,10 +162,16 @@
 					
 				</tbody>
 			</table>
-			<!-- Wie navigiere ich mit einem Button?! :D -->
+			<!-- Wie navigiere ich mit einem Button?! :D 
 			<button type="button" th:href="@{'/klausur/bewertung/' + ${klausur.id}}">
 				Prüfung bewerten
-			</button>
+			</button>-->
+			<form action="/action_page.php"
+				th:action="@{'/klausurEintrag/' + ${klausur.id}} + '/listEintraegen'"
+				method="GET">
+				<button type="submit" class="clefAndEvaluation__button">Klausureintraege
+					lesen</button>
+			</form> 
 		</div>
 	</div>
 </body>

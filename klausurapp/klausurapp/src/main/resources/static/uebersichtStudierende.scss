@@ -20,7 +20,7 @@ $defaultBorder: 2px solid rgb(0, 0, 0);
     /* Element */
     .studisTabel--tableRow{
         &:nth-of-type(even){background: rgb(255, 255, 255)};
-        &:nth-of-type(odd){background: rgb(55, 11, 250)};
+        &:nth-of-type(odd){background:   #d7f4fa9a};
     }
 
     /* Modifier */

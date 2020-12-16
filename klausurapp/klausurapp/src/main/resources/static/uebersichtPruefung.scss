@@ -111,4 +111,13 @@ $defaultBorder: 2px solid rgb(0, 0, 0);
 .clefAndEvaluation{ 
     float: left;
     margin: $defaultMargin;
+
+    &__button {
+        background-color: #087187;
+        color: white;
+        border-radius: 0.75em;
+        float: right;
+        font-weight: bold;
+        margin-top: 0.75em;
+    }
 }
