@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import de.fhdo.klausurapp.converters.AufgabeMapper;
 import de.fhdo.klausurapp.dto.AufgabeDto;
+import de.fhdo.klausurapp.dto.KlausurEintragDto;
 import de.fhdo.klausurapp.repositories.AufgabeRepository;
 
 @Service
@@ -23,6 +24,11 @@ public class AufgabeService {
 	@Transactional
 	public AufgabeDto addAufgabe(AufgabeDto aufgabeDto) {
         return aufgabeMapper.aufgabeToDto(aufgabeRepository.save(aufgabeMapper.dtoToAufgabe(aufgabeDto)));
-    }	
+    }
+	
+	@Transactional
+	public AufgabeDto lesenAufgabeID(long id) {
+		return aufgabeMapper.aufgabeToDto(aufgabeRepository.findById(id).get());
+	}
 
 }

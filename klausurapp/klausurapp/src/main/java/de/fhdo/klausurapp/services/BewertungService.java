@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import java.util.List;
 import de.fhdo.klausurapp.converters.BewertungMapper;
 import de.fhdo.klausurapp.dto.BewertungDto;
 import de.fhdo.klausurapp.repositories.BewertungRepository;
@@ -22,5 +24,13 @@ public class BewertungService {
 	@Transactional
 	public BewertungDto addBewertung(BewertungDto bewertungDto) {
         return bewertungMapper.bewertungToDto(bewertungRepository.save(bewertungMapper.dtoToBewertung(bewertungDto)));
-    }	
+    }
+	
+	@Transactional
+	public List<BewertungDto> addListBewetung(List<BewertungDto> list){
+		for(BewertungDto bewertung : list) {
+			addBewertung(bewertung);
+		}
+		return list;
+	}
 }

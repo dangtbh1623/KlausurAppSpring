@@ -28,7 +28,8 @@
 				<th>Nachname</th>
 				<th>Vorname</th>
 				<th class="studisTabel--borderRight">Versuch</th>
-				<th th:each="aufgabe, iter : ${klausur.aufgaben}" th:class="${iter.last}? 'studisTabel--borderRight'"
+				<th th:each="aufgabe, iter : ${klausur.aufgaben}"
+					th:class="${iter.last}? 'studisTabel--borderRight'"
 					th:text="${aufgabe.name}">AufgabenName</th>
 				<th class="studisTabel--borderRight">Gesamt</th>
 				<th class="studisTabel--borderRight">Note</th>
@@ -67,7 +68,7 @@
 				<td class="studisTabel--borderRight">Fehlt</td>
                 <td>Fehlt</td>
                 -->
-				<td th:if="${!klausurEintrag.bewertungen.isEmpty()}"
+				<!-- <td th:if="${!klausurEintrag.bewertungen.isEmpty()}"
 					th:each="bewertung, iter : ${klausurEintrag.bewertungen}" th:class="${iter.last}? 'studisTabel--borderRight'"
 					th:text="${bewertung.punkte + '/'+ bewertung.aufgabe.maxPunkte}">
 					15</td>
@@ -77,12 +78,44 @@
 					15</td>
 				<td class="studisTabel--borderRight">Fehlt</td>
 				<td class="studisTabel--borderRight">Fehlt</td>
-				<td><a th:href="@{'/klausur/' + ${klausur.id}}">Bewerten</a></td>
-			</tr>
+				<td><a th:href="@{'/klausurEintrag/' + ${klausurEintrag.id}}">Bewerten</a></td>
+			</tr> -->
+				<td th:each="aufgabe, iter : ${klausur.aufgaben}"
+					th:class="${iter.last}? 'studisTabel--borderRight'">
+					<form action="/action_page.php"
+						th:action="@{'/klausurEintrag/' + ${klausurEintrag.id} + '/listEintraegen/' + ${aufgabe.id}}"
+						method="GET">
+						<fieldset>
+							<input
+								th:if="${iter.index} < ${klausurEintrag.bewertungen.size()}"
+								type="text" name="punkte" th:name="punkte"
+								pattern="[0-9]+([\.][0-9]{0,2})" size="5" maxlength="5"
+								th:placeholder="${klausurEintrag.bewertungen[iter.index].punkte + '/' + aufgabe.maxPunkte}"
+								required> <input
+								th:if="${iter.index} >= ${klausurEintrag.bewertungen.size()}"
+								type="text" name="punkte" th:name="punkte"
+								pattern="[0-9]+([\.][0-9]{0,2})" size="5" maxlength="5"
+								th:placeholder="${'--/' + aufgabe.maxPunkte}" required>
+							<!-- 								<p th:text="${klausurEintrag.bewertungen}">a</p> -->
+							<!-- 								Hier habe ich Problem mit dem Anzeige Placeholder. Die Reihenfolge des Punkte stimmt nicht.
+									Jedoch stimmt die Anzeige der die maxPunkte. Die Save-Funktion läuft gut.
+									Werte in der Datenbank sind auch richtig. Nur die Anzeige hier etwas falsch :D  -->
+							<button
+								th:if="${iter.index} == ${klausurEintrag.bewertungen.size()}"
+								type="submit" class="tasks__button">Save</button>
+						</fieldset>
+					</form>
+				</td>
+				<td class="studisTabel--borderRight">Fehlt</td>
+				<td class="studisTabel--borderRight">Fehlt</td>
+				<td class="studisTabel--borderRight">Fehlt</td>
 		</tbody>
 	</table>
-	<button class="exit__button exit__button--floating" type="button">
-		Beenden</button>
+	<form action="/action_page.php"
+		th:action="@{'/klausur/' + ${klausur.id}}" method="GET">
+		<button class="exit__button exit__button--floating" type="submit">
+			Beenden</button>
+	</form>
 </body>
 
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Erstellung einer neuen Klausur</title>
+<link rel="stylesheet" href="/neueBewertung.css">
+<meta charset="utf-8">
+</head>
+<body class="body">
+	<div class="navigation">
+		<a class="navigation__item" href="./start.html"
+			th:href="@{/klausur/listKlausuren}">Aktiv</a> <a
+			class="navigation__item" href="./archiv.html"
+			th:href="@{/klausur/test}">Archiv</a> <a class="navigation__item"
+			href="./neueKlausur.html" th:href="@{/klausur/createKlausur}">Neue
+			Klausur</a> <a class="navigation__item navigation__item--active"
+			th:text="|${klausur.veranstaltung} ${klausur.semester} ${klausur.jahr}|">Entwurfsmuser
+			und Komponentenbasierte Systeme 2021</a>
+	</div>
+	<main>
+		<section class="inputBlock">
+			<div class="inputBlock__function inputBlock__function--uppercase"
+				th:text="${student.matrikelNr + ' '  + student.nachname }">Eine
+				neue Klausur erstellen</div>
+			<form class="inputBlock__form" action="./uebersichtPruefung.html"
+				th:action="@{'/klausurEintrag/' + ${klausurEintrag.id}}" th:object="${listBewertung}"
+				method="POST">
+				<div th:each="bewertung, iter : ${listBewertung.bewertungen}">
+				<label for="aufgabe" class="inputBlock__label" th:text="${bewertung.aufgabe.name + ' ' + listBewertung.bewertungen[iter.index]}">Aufgabe</label>
+ 				<input type="text" th:field="*{bewertungen[__${iter.index}__].punkte}"
+					class="inputBlock__input" size="60" maxlength="60"
+					placeholder="Entwurfsmuster und Komponentenbasierte Systeme 2021" 
+					required><br>			
+				</div>
+				<button type="submit" class="inputBlock__button">Erstellen</button>
+			</form>
+		</section>
+	</main>
+</body>
+</html>
