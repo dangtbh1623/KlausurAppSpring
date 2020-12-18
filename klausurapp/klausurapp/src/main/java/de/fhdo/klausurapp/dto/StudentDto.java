@@ -1,5 +1,10 @@
 package de.fhdo.klausurapp.dto;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+
 /**
  * Data Transfer Object (DTO) fuer Studierende. Oberhalb der Fachlogikschicht soll
  * zur besseren Entkopplung nur mit DTOs gearbeitet werden und *nicht* mit den
@@ -9,8 +14,13 @@ package de.fhdo.klausurapp.dto;
  */
 public class StudentDto {
 	private Long id;
+	
+	@Min(value= 1000000)
+	@Max(value= 9999999)
 	private Long matrikelNr;
+	@NotEmpty
 	private String vorname;
+	@NotEmpty
 	private String nachname;
 	
 	public StudentDto() {}

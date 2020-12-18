@@ -2,6 +2,10 @@ package de.fhdo.klausurapp.dto;
 
 import java.util.List;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 /**
  * Data Transfer Object (DTO) fuer Klausureintraege. Oberhalb der Fachlogikschicht soll
  * zur besseren Entkopplung nur mit DTOs gearbeitet werden und *nicht* mit den
@@ -11,8 +15,13 @@ import java.util.List;
  */
 public class KlausurEintragDto {
 	private Long id;
+	@NotNull
 	private KlausurDto klausur;
+	@NotNull
 	private StudentDto student;
+	
+	@Min(value= 1)
+	@Max(value= 3)
 	private Integer versuch;
 	private List<BewertungDto> bewertungen;
 

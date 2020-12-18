@@ -45,20 +45,24 @@
 			</tbody>
 		</table>
 		<div class="tasks">
-				<form action="/action_page.php" th:action="@{'/klausur/addStudi/' + ${klausur.id}}" th:object="${neuerStudi}" method="POST"> 
+				<form action="/action_page.php" th:action="@{'/klausur/addStudi/'}" th:object="${neuerStudi}" method="POST"> 
 			<fieldset>
 				<legend>Studi Hinzufügen</legend>		
 				<input type="text" name="vorname" th:field="*{vorname}" size="10" maxlength="20"
 					placeholder="Vorname"
 					required>
-					<input type="text" name="nachname" th:field="*{nachname}" size="10" maxlength="20"
+					<span th:if="${#fields.hasErrors('vorname')}" th:errors="*{vorname}">Fehler</span>
+				<input type="text" name="nachname" th:field="*{nachname}" size="10" maxlength="20"
 					placeholder="Nachname"
 					required>
-					<input type="number" name="matrikelNr" th:field="*{matrikelNr}" size="15" maxlength="15"
+					<span th:if="${#fields.hasErrors('nachname')}" th:errors="*{nachname}">Fehler</span>
+				<input type="number" name="matrikelNr" th:field="*{matrikelNr}" size="15" maxlength="15"
 					placeholder="MatrikelNr."
 					required>
-					<br>
-					<button type="submit" class="tasks__button">Add</button>								
+					<span th:if="${#fields.hasErrors('matrikelNr')}" th:errors="*{matrikelNr}">Fehler</span>
+				<input type="hidden" name="klausurID" th:value="${klausur.id}"> 
+				<br>
+				<button type="submit" class="tasks__button">Add</button>								
 			</fieldset>
 		</form>
 		</div>
@@ -87,7 +91,6 @@
 					<button type="submit" class="tasks__button">Add</button>								
 			</fieldset>
 		</form>
-
 	</div>
 	<div class="clefAndEvaluation">
 		<div class="clef">

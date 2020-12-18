@@ -3,6 +3,11 @@ package de.fhdo.klausurapp.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import de.fhdo.klausurapp.domain.Semester;
 
 /**
@@ -14,8 +19,12 @@ import de.fhdo.klausurapp.domain.Semester;
  */
 public class KlausurDto {
 	private Long id;
+	@NotEmpty
 	private String veranstaltung;
+	@NotNull
 	private Semester semester;
+	@Min(value = 1000)
+	@Max(value = 9999)
 	private Integer jahr;
 	private List<AufgabeDto> aufgaben = new ArrayList<>();
 

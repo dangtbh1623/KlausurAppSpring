@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Not Found</title>
+    <link rel="stylesheet" href="/neueKlausur.css">
+    <meta charset="utf-8">
+</head>
+<body class="body">
+    <div class="navigation">
+		<a class = "navigation__item" href="./start.html" th:href="@{/klausur/listKlausuren}">Aktiv</a>
+		<a class = "navigation__item" href="./archiv.html" th:href="@{/klausur/test}">Archiv</a>
+		<a class = "navigation__item navigation__item--active" href="#" th:href="@{/klausur/createKlausur}">Neue Klausur</a>
+    </div>
+    <div th:text="${httpStatusCode}">Fehler: </div>
+    <div th:text="${exception.getMessage()}">Exception.getMessage()</div>
+</body>
+</html>

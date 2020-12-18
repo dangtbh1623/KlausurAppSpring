@@ -1,5 +1,9 @@
 package de.fhdo.klausurapp.dto;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 /**
  * Data Transfer Object (DTO) fuer Bewertungen. Oberhalb der Fachlogikschicht
  * soll zur besseren Entkopplung nur mit DTOs gearbeitet werden und *nicht* mit
@@ -9,7 +13,11 @@ package de.fhdo.klausurapp.dto;
  */
 public class BewertungDto {
 	private Long id;
+	
+	@NotNull
 	private AufgabeDto aufgabe;
+	@Min(value = 1)
+	@Max(value = 100)
 	private Double punkte;
 
 	public BewertungDto() {
