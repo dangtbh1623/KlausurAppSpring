@@ -1,2 +1,2 @@
 # KlausurAppSpring
-Projekt, um eine Java-Anwendung für klausurverwaltung mit SpringBoot zu entwickeln
+Projekt, um eine Java-Anwendung für klausurverwaltung mit SpringBoot und Thymeleaf zu entwickeln
